@@ -273,4 +273,40 @@ import './style.css'
 //   }
 //   Task6();
 
-   
+//let company = prompt('Какое "официальное" название JavaScript?', '');
+
+//if (company == 'ECMAScript') {
+ // alert( 'Да вы знаток!' )
+//} else {
+ // alert( 'Не знаете? “ECMAScript”!' )
+
+
+
+ //let chisl = prompt('Введите число', 0);
+
+//if (chisl > 0) {
+//  alert( 1 );
+//} else if (chisl < 0) {
+ // alert( -1 );
+////} else {
+  //alert( 0 );
+//}
+
+/*let age = 14
+if (age >= 14 && age <= 90 ) {
+  console.log(true)
+}
+
+//Напишите условие if для проверки, что значение переменной age НЕ находится в диапазоне 14 и 90 включительно.
+
+//Напишите два варианта: первый с использованием оператора НЕ !, второй – без этого оператора.
+
+if (!(age >= 14 && age <= 90 )) {
+  console.log(true)
+}
+if (age < 14 && age > 90 ) {
+  console.log(true)
+}
+
+
+
