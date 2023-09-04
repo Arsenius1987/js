@@ -1580,7 +1580,6 @@ console.log('j', j)
 function showMessage(from:any, text='Многозначительно молчит...') { // параметры: from, text
   from = '*' + from + '*'; // немного украсим "from"
   console.log('local from', from);
-  return
   console.log(from + ': ' + text);
 }
 
@@ -1676,3 +1675,138 @@ function getNSum2(n1: number, ...args: any) {
 }
 
 console.log(getNSum2(1, 5,6))
+
+
+// alert (Привет Жорж)
+// result = prompt(title, default);
+
+//var result = prompt (Привет Жорж);
+//alert (Привет Жорж)
+
+
+
+//var nameUser=prompt("Здравствуйте, как вас зовут?", "аноним");
+
+   // alert("Рад вас видеть, "+ Жора);
+
+
+
+   let xz: any =5
+   xz = "Vasy"
+
+   let uName = "Vasy"
+   let isLogin = false
+
+   const appDiv = document.getElementById("app")
+
+   //if (appDiv) appDiv.innerHTML += `<p>sdfdsf</p>`
+   function render()
+
+
+   const pElement = document.createElement("p")
+   pElement.textContent =  "ДОБРО ПОЖАЛОВАТЬ"
+   if (appDiv) appDiv.appendChild(pElement)
+
+   const button = document.createElement("button")
+   button.textContent="Login"
+   if (appDiv && !isLogin) appDiv.appendChild(button)
+
+   function render() {
+     
+   }
+
+
+
+  
+ // Функция принимает обьект -прямоукольник ивыводит 
+  //информацию о нем (где какая точка расположена)
+
+
+
+
+
+  // Задание
+// Создать объект, описывающий прямоугольник(хранит коор -
+// динаты левой верхней и правой нижней точек), и написать следу -
+// ющие функции для работы с таким объектом.
+
+type Rect = {
+  x0:number,
+  y0:number,
+  x1:number,
+  y1:number,
+}
+
+const rect:Rect = {
+  x0:50,
+  y0:50,
+  x1:100,
+  y1:100,
+}
+
+const rectDiv = document.getElementById('rect')
+function renderRect(rect:Rect) {
+  if (rectDiv) {
+    rectDiv.style.top = rect.y0 + 'px'
+    rectDiv.style.left = rect.x0 + 'px'
+    rectDiv.style.width = getRectWidth(rect) + 'px'
+    rectDiv.style.height = getRectHeight(rect) + 'px'
+  }
+}
+renderRect(rect)
+
+// 1 Функция принимает объект - прямоугольник и выводит
+// информацию о нем(где какая точка расположена).
+
+function showRectInfo(rect: Rect) {
+  console.log(`top-left (${rect.x0}, ${rect.y0}) bootom-rigth (${rect.x1}, ${rect.y1})`)
+}
+showRectInfo(rect)
+
+// 2 Функция принимает объект - прямоугольник и возвращает
+// его ширину.
+
+function getRectWidth(rect: Rect) {
+  return rect.x1 - rect.x0
+}
+
+// 3 Функция принимает объект - прямоугольник и возвращает
+// его высоту.
+
+function getRectHeight(rect: Rect) {
+  return rect.y1 - rect.y0
+}
+
+// 4 Функция принимает объект - прямоугольник и возвращает
+// его площадь.
+
+// 5 Функция принимает объект - прямоугольник и возвращает
+// его периметр.
+
+// 6 Функция изменения ширины прямоугольника.Она прини -
+// мает объект - прямоугольник и на сколько единиц изменить
+// ширину.
+
+// 7 Функция изменения высоты прямоугольника.Она прини -
+// мает объект - прямоугольник и на сколько единиц изменить
+// высоту.
+
+// 8 Функция изменения ширины и высоты прямоугольника.
+// Она принимает объект - прямоугольник и два значения –
+// для изменения ширины и высоты.
+
+// 9 Функция смещения прямоугольника по оси X.Она при -
+// нимает объект - прямоугольник и на сколько единиц его
+// сдвинуть.
+
+// 10 Функция смещения прямоугольника по оси Y.Она при -
+// нимает объект - прямоугольник и на сколько единиц его
+// сдвинуть.
+
+// 11 Функция смещения прямоугольника и по оси X и по
+// оси Y.Она принимает объект - прямоугольник и два значе -
+// ния: сдвиг по оси X и сдвиг по оси Y.
+
+// 12 Функция для проверки, находится ли точка внутри пря -
+// моугольника.Она принимает объект - прямоугольник и
+// координаты точки.
