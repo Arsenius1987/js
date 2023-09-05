@@ -1580,7 +1580,8 @@ console.log('j', j)
 function showMessage(from:any, text='Многозначительно молчит...') { // параметры: from, text
   from = '*' + from + '*'; // немного украсим "from"
   console.log('local from', from);
-  console.log(from + ': ' + text);
+  // return
+  // console.log(from + ': ' + text);
 }
 
 showMessage('Аня', 'Привет!'); // *Аня*: Привет! (*)
@@ -1674,58 +1675,260 @@ function getNSum2(n1: number, ...args: any) {
   return sum
 }
 
-console.log(getNSum2(1, 5,6))
+console.log(getNSum2(1,0,2,6,5))
 
+function pow(x: number, n: number) {
+  console.log(n)
+  return (n == 1) ? x : (x * pow(x, n - 1));
+}
 
-// alert (Привет Жорж)
-// result = prompt(title, default);
+function factorial(n:number):number {
+  if (n==1) return n
+  return n * factorial(n-1)
+  return 5 * 4* 3* 2* 1
+  return 5 * stack * 1
+  return 5 * stack * 2 * 1
+  return 5 * stack * 3 * 2
+  return 5 * 4 * 6
+}
 
-//var result = prompt (Привет Жорж);
-//alert (Привет Жорж)
+console.log(factorial(5))
 
+function strSum(s:string) {
+  let n = +s
+  if (n==1) return n
+  return s + strSum((n-1).toString())
+}
 
+console.log(strSum('5'))
 
-//var nameUser=prompt("Здравствуйте, как вас зовут?", "аноним");
+// !Function expression
 
-   // alert("Рад вас видеть, "+ Жора);
+// ?function declaration (объявление функции)
+function sayHi1() {
+  alert("Привет");
+}
 
+// ?function expression (присваивание функции)
+let sayHi2 = function () {
+  alert("Привет");
+};
 
+console.log(sayHi1)
+console.log(sayHi2)
 
-   let xz: any =5
-   xz = "Vasy"
+// Функция это значение.Поэтому мы можем работать с ней так же, как и с другими видами значений.
+// Мы можем скопировать функцию в другую переменную:
 
-   let uName = "Vasy"
-   let isLogin = false
+function sayHi() {   // (1) создаём
+  console.log("Привет")
+}
+let func = sayHi;    // (2) копируем
+func() // Привет     // (3) вызываем копию (работает)!
+sayHi() // Привет    //     эта тоже все ещё работает (почему бы и нет)
 
-   const appDiv = document.getElementById("app")
+// !!!Функции -«колбэки»
 
-   //if (appDiv) appDiv.innerHTML += `<p>sdfdsf</p>`
-   function render()
+function ask(question: string, yes: Function, no: Function) {
+  if (confirm(question)) yes()
+  else no();
+}
 
+function showOk() {
+  alert("Вы согласны.");
+}
 
-   const pElement = document.createElement("p")
-   pElement.textContent =  "ДОБРО ПОЖАЛОВАТЬ"
-   if (appDiv) appDiv.appendChild(pElement)
+function showCancel() {
+  alert("Вы отменили выполнение.");
+}
 
-   const button = document.createElement("button")
-   button.textContent="Login"
-   if (appDiv && !isLogin) appDiv.appendChild(button)
+// использование: функции showOk, showCancel передаются в качестве аргументов ask
+// !ask("Вы согласны?", showOk, showCancel);
+// !ask(
+// "Вы согласны?",
+//   function () { alert("Вы согласились."); },
+//   function () { alert("Вы отменили выполнение."); }
+// )
+// !ask(
+// "Вы согласны?",
+//   () => alert("Вы согласились."),
+//   () => alert("Вы отменили выполнение.")
+// )
 
-   function render() {
-     
-   }
+// ! Итого
+// ? Функции – это значения.Они могут быть присвоены, скопированы или объявлены в любом месте кода.
+// ? Если функция объявлена как отдельная инструкция в основном потоке кода, то это “Function Declaration”.
+// ? Если функция была создана как часть выражения, то это “Function Expression”.
+// ? Function Declaration обрабатываются перед выполнением блока кода.Они видны во всём блоке.
+// ? Функции, объявленные при помощи Function Expression, создаются только когда поток выполнения достигает их.
 
+// ! Стрелочные функции
 
+let sum: Function | null = (a:number, b:number) => a + b
+let epression = (a:number, b:number) => { 
+  a *=2
+  return a + b
+}
 
+/* Эта стрелочная функция представляет собой более короткую форму:
+
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+
+console.log(sum(1, 2)) // 3
+sum = null
+
+// Итого
+// Стрелочные функции очень удобны для простых действий, особенно для однострочных.
+
+// Они бывают двух типов:
+
+// Без фигурных скобок: (...args) => expression – правая сторона выражения: функция вычисляет его и возвращает результат.Скобки можно не ставить, если аргумент только один: n => n * 2.
+// С фигурными скобками: (...args) => { body } – скобки позволяют нам писать несколько инструкций внутри функции, но при этом необходимо явно вызывать return, чтобы вернуть значение.
+
+let xz: any = 5
+xz = "Вася"
+
+let uName = ''
+let toDos = [] as string[]
+
+const appDiv = document.getElementById('app')
+// if (appDiv) appDiv.innerHTML += `<p>Добро пожаловать на сайт</p>`
+function render() {
+  let isLogin = Boolean(uName)
+  if (appDiv) appDiv.innerHTML = ''
+  const pElelement = document.createElement('p')
+  pElelement.textContent = uName ? `${uName}, добро пожаловать на сайт` : `Добро пожаловать на сайт`
+  if (appDiv) appDiv.appendChild(pElelement) 
   
- // Функция принимает обьект -прямоукольник ивыводит 
-  //информацию о нем (где какая точка расположена)
+  const button = document.createElement('button')
+  button.textContent = isLogin ? 'LogOut' : 'Login'
+  button.addEventListener('click', ()=>{
+    uName = isLogin ? '' : 'Niko'
+    toDos = !isLogin ? ['проснуться', 'позавтракать', 'умыться', 'работать', 'лечь спать'] : []
+    render()
+  })
+  if (appDiv) appDiv.appendChild(button) 
+  if (isLogin) {
+    const olElement = document.createElement('ol')
+    // for (let i=0;i<toDos.length;i++) {
+    //   const listElement = document.createElement('li')
+    //   listElement.textContent = toDos[i]
+    //   olElement.appendChild(listElement)
+    // }
+    for (let el of toDos) {
+      const listElement = document.createElement('li')
+      listElement.textContent = el
+      olElement.appendChild(listElement)
+    }
+    if (appDiv) appDiv.appendChild(olElement)
+  }
+}
+
+render()
+
+const userO = {               // объект
+  name: "John",             // под ключом "name" хранится значение "John"
+  age: 30,                  // под ключом "age" хранится значение 30
+  "likes birds": true,      // имя свойства из нескольких слов должно быть в кавычках
+  'backgound-color': 'red',
+  0: 10,
+} as Record<string,any>
+
+console.log(userO)
+console.log({...userO})
+console.log(userO.name)
+console.log(userO[0])
+console.log(userO['backgound-color'])
 
 
+const key = 'backgound-color'
+console.log(userO[key])
+
+userO.isAdmin = true
+console.log({...userO})
+
+delete userO[0]
+delete userO.isLogin
+delete userO['backgound-color']
+console.log({...userO})
+
+function makeUser(name:string='', age:number=0) {
+  return {
+    // вместо такой записи, где мы отдельно прописываем имя свойства, а значение берём из одноимённой переменной
+    // name:name,
+    // age:age,
+    // мы можем просто указать имена переменных
+    // В таком случае имя переменной станет именем свойства, а её значение,- значением свойства
+    name, // тоже самое, что и name:name
+    age,  // тоже самое, что и age:age
+    admin:false,
+    key: 20,
+    noValue: undefined,
+  } as any
+}
+
+const usr1 = makeUser('Niko', 35)
+console.log(usr1)
+
+// При обращении к свойству, которого нет, возвращается undefined.Это позволяет просто проверить существование свойства:
+// Для чего вообще нужен оператор in? Разве недостаточно сравнения с undefined ?
+
+// В большинстве случаев прекрасно сработает сравнение с undefined.Но есть особый случай, когда оно не подходит и нужно использовать "in".
 
 
+console.log('"age" in usr1', "age" in usr1)    // true, usr1.age существует
+console.log('"blabla" in usr1', "blabla" in usr1) // false, usr1.blabla не существует
+console.log('usr1.blabla === undefined', usr1.blabla === undefined) // true, usr1.blabla не существует
+// Это когда свойство существует, но содержит значение undefined
+console.log('"noValue" in usr1', "noValue" in usr1) // true, usr1.noValue существует
+console.log('usr1.noValue === undefined', usr1.noValue === undefined) // true, usr1.noValue существует, но его значение = undefined
+console.log('usr1.noValue === undefined', usr1['noValue'] === undefined) // true, usr1.noValue существует, но его значение = undefined
 
-  // Задание
+// Подобные ситуации случаются очень редко, так как undefined обычно явно не присваивается.Для «неизвестных» или «пустых» свойств мы используем значение null
+
+// !Цикл "for..in"
+// На каждой итерации цикла в переменную key попадают имена свойств объекта (строкой)
+for (let key in usr1) {
+  console.log('key', key, 'value', usr1[key])
+}
+
+// Получить все ключи объекта массивом
+const keys = Object.keys(usr1)
+console.log(keys)
+console.log(Object.values(usr1))
+console.log(Object.entries(usr1)[2])
+
+
+// Итого
+// Объекты – это ассоциативные массивы с рядом дополнительных возможностей.
+
+// Они хранят свойства(пары ключ - значение), где:
+
+// Ключи свойств должны быть строками или символами(обычно строками).
+// Значения могут быть любого типа.
+// Чтобы получить доступ к свойству, мы можем использовать:
+
+// Запись через точку: obj.property.
+// Квадратные скобки obj["property"].Квадратные скобки позволяют взять ключ из переменной, например, obj[varWithKey].
+// Дополнительные операторы:
+
+// Удаление свойства: delete obj.prop.
+// Проверка существования свойства: "key" in obj.
+// Перебор свойств объекта: цикл for for (let key in obj).
+// То, что мы изучали в этой главе, называется «простым объектом» («plain object») или просто Object.
+
+// В JavaScript есть много других типов объектов:
+
+// Array для хранения упорядоченных коллекций данных,
+// Date для хранения информации о дате и времени,
+// Error для хранения информации об ошибке.
+// … и так далее.
+// У них есть свои особенности, которые мы изучим позже.Иногда люди говорят что - то вроде «тип данных Array» или «тип данных Date», но формально они не являются отдельными типами, а относятся к типу данных Object.Они лишь расширяют его различными способами.
+
+// Задание
 // Создать объект, описывающий прямоугольник(хранит коор -
 // динаты левой верхней и правой нижней точек), и написать следу -
 // ющие функции для работы с таким объектом.
@@ -1745,6 +1948,35 @@ const rect:Rect = {
 }
 
 const rectDiv = document.getElementById('rect')
+
+const moveLeftTopButton = document.getElementById('moveLeftTop')
+moveLeftTopButton?.addEventListener('click', () => { changeRectPosition(rect, -10, -10) })
+const moveTopButton = document.getElementById('moveTop')
+moveTopButton?.addEventListener('click', () => { changeRectPositionY(rect, -10) })
+const moveRightTopButton = document.getElementById('moveRightTop')
+moveRightTopButton?.addEventListener('click', () => { changeRectPosition(rect, 10, -10) })
+const moveLeftButton = document.getElementById('moveLeft')
+moveLeftButton?.addEventListener('click', () => { changeRectPositionX(rect, -10) })
+const moveRightButton = document.getElementById('moveRight')
+moveRightButton?.addEventListener('click', () => { changeRectPositionX(rect, 10) })
+const moveLeftBottomButton = document.getElementById('moveLeftBottom')
+moveLeftBottomButton?.addEventListener('click', () => { changeRectPosition(rect, -10, 10) })
+const moveBottomButton = document.getElementById('moveBottom')
+moveBottomButton?.addEventListener('click', () => { changeRectPositionY(rect, 10) })
+const moveRightBottomButton = document.getElementById('moveRightBottom')
+moveRightBottomButton?.addEventListener('click', () => { changeRectPosition(rect, 10, 10) })
+
+const squeezeX = document.getElementById('squeezeX')
+squeezeX?.addEventListener('click', () => { changeRectWidth(rect, -10) })
+const expandX = document.getElementById('expandX')
+expandX?.addEventListener('click', () => { changeRectWidth(rect, 10) })
+const squeezeY = document.getElementById('squeezeY')
+squeezeY?.addEventListener('click', () => { changeRectHeight(rect, -10) })
+const expandY = document.getElementById('expandY')
+expandY?.addEventListener('click', () => { changeRectHeight(rect, 10) })
+
+
+console.log(rectDiv)
 function renderRect(rect:Rect) {
   if (rectDiv) {
     rectDiv.style.top = rect.y0 + 'px'
@@ -1780,32 +2012,76 @@ function getRectHeight(rect: Rect) {
 // 4 Функция принимает объект - прямоугольник и возвращает
 // его площадь.
 
+function getRectArea(rect: Rect) {
+  return getRectWidth(rect) * getRectHeight(rect)
+}
+console.log(`площадь прямоугольника ${getRectArea(rect)}px`)
+
 // 5 Функция принимает объект - прямоугольник и возвращает
 // его периметр.
+
+function getRectPerimetr(rect: Rect) {
+  return getRectWidth(rect) * 2 + getRectHeight(rect) * 2 
+}
+console.log(`периметр прямоугольника ${getRectPerimetr(rect)}px`)
 
 // 6 Функция изменения ширины прямоугольника.Она прини -
 // мает объект - прямоугольник и на сколько единиц изменить
 // ширину.
 
+function changeRectWidth(rect: Rect, n:number) {
+  rect.x1 += n
+  renderRect(rect)
+}
+
 // 7 Функция изменения высоты прямоугольника.Она прини -
 // мает объект - прямоугольник и на сколько единиц изменить
 // высоту.
+
+function changeRectHeight(rect: Rect, n: number) {
+  rect.y1 += n
+  renderRect(rect)
+}
 
 // 8 Функция изменения ширины и высоты прямоугольника.
 // Она принимает объект - прямоугольник и два значения –
 // для изменения ширины и высоты.
 
+function changeRectWidthAndHeight(rect: Rect, x: number, y:number) {
+  changeRectWidth(rect, x)
+  changeRectHeight(rect, y)
+  renderRect(rect)
+}
+
 // 9 Функция смещения прямоугольника по оси X.Она при -
 // нимает объект - прямоугольник и на сколько единиц его
 // сдвинуть.
+
+function changeRectPositionX(rect: Rect, n: number) {
+  rect.x0 += n
+  rect.x1 += n
+  renderRect(rect)
+}
 
 // 10 Функция смещения прямоугольника по оси Y.Она при -
 // нимает объект - прямоугольник и на сколько единиц его
 // сдвинуть.
 
+function changeRectPositionY(rect: Rect, n: number) {
+  rect.y0 += n
+  rect.y1 += n
+  renderRect(rect)
+}
+
 // 11 Функция смещения прямоугольника и по оси X и по
 // оси Y.Она принимает объект - прямоугольник и два значе -
 // ния: сдвиг по оси X и сдвиг по оси Y.
+
+function changeRectPosition(rect: Rect, x: number, y: number) {
+  changeRectPositionX(rect, x)
+  changeRectPositionY(rect, y)
+  renderRect(rect)
+}
 
 // 12 Функция для проверки, находится ли точка внутри пря -
 // моугольника.Она принимает объект - прямоугольник и
