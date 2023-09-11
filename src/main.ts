@@ -2324,3 +2324,6 @@ function caclOvercomingTheDistance(distance: number, carInfo: any) {
   }  
 }
 caclOvercomingTheDistance(800, carInfo)
+
+
+//Цикл for ... in i for ... of про
