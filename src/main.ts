@@ -7,8 +7,8 @@ console.log(1 +
   2 +
   4)
 
-// ; ставится только перед квадратными скобками
-;[1, 2].forEach(console.log)
+  // ; ставится только перед квадратными скобками
+  ;[1, 2].forEach(console.log)
 
 /*
   Многострочный
@@ -119,7 +119,7 @@ const COLOR_ORANGE = "#FF7F00"
 
 // ...когда нам нужно выбрать цвет
 let color = COLOR_ORANGE
-console.log('color',color) // #FF7F00
+console.log('color', color) // #FF7F00
 
 
 // !Типы данных
@@ -133,7 +133,7 @@ console.log('color',color) // #FF7F00
 let string = 'fsddfg'
 
 // имяПеременной:any - такая запись говорит о том, что мы хотим, чтобы переменная хранила любое значение
-let newMessage:any = "hello"
+let newMessage: any = "hello"
 // либо мы можем указать после значения переменной as any
 let newMessage2 = "hello" as any
 newMessage = 123456
@@ -146,7 +146,7 @@ console.log('1_000_000', 1_000_000)
 console.log('10e3', 10e3) // e3 == 10**3
 console.log('1e-3', 1e-3) // e3 == 10**-3
 
-console.log('typeof(n)', typeof(n)) // number
+console.log('typeof(n)', typeof (n)) // number
 // Числовой тип данных(number) представляет как целочисленные значения, так и числа с плавающей точкой.
 
 // Существует множество операций для чисел, например, умножение *, деление /, сложение +, вычитание - и так далее.
@@ -194,7 +194,7 @@ console.log('Обычная строка с\nпереносом строки и\
 let str2 = 'Одинарные \r\n"кавычки" тоже подойдут It\'s'
 // Строки с косыми кавычками поддерживаю перенос строки, а так же позволяют встраивать в себя значения переменных
 // Их так же называют шаблонными строками
-let phrase = `Обратные ${2+3}
+let phrase = `Обратные ${2 + 3}
 'кавычки' позволяют 
 "встраивать" переменные ${str}`
 
@@ -209,7 +209,7 @@ age = 23
 // Такое встраивание хначений в строку называется интерполяцией
 console.log(`Привет, меня зовут ${name}.
 Мне ${age} лет.
-Через месяц мне будет ${age+1}`)
+Через месяц мне будет ${age + 1}`)
 
 // Объявление пустой строки
 let emptyString = ''
@@ -321,7 +321,7 @@ let num = 132
 // ?Строковое преобразование
 
 let value = true
-console.log('typeof true',typeof value) // boolean
+console.log('typeof true', typeof value) // boolean
 
 // функция String(value), преобразует значение к строке
 
@@ -340,7 +340,7 @@ console.log('String(undefined)', String(undefined))
 // Операции, которые всегда неявно приводят операнды к числу, получаем число
 // TS ругается, когда мы пытаемся делить строки
 // @ts-ignore
-console.log('"6" / "2"',"6" / "2") // 3, строки преобразуются в числа
+console.log('"6" / "2"', "6" / "2") // 3, строки преобразуются в числа
 // @ts-ignore
 console.log('"6" * "2" =', "6" * "2") // 12
 // @ts-ignore
@@ -362,7 +362,7 @@ console.log('6 + "2" =', 6 + "2") // '62'
 // Операции сложения происходят слева на право
 console.log('8 + 6 + "2" =', 8 + 6 + "2") // '142'
 // Скобки имеют высший приоритет
-console.log('"1" + (8 + 6) + "2" =',"1" + (8 + 6) + "2") // '1142'
+console.log('"1" + (8 + 6) + "2" =', "1" + (8 + 6) + "2") // '1142'
 
 
 // Мы можем использовать функцию Number(value), чтобы явно преобразовать value к числу:
@@ -665,7 +665,7 @@ console.log(undefined == 0); // false (3)
 
 // Относитесь очень осторожно к любому сравнению с undefined / null, кроме случаев строгого равенства ===.
 // Не используйте сравнения >= > < <= с переменными, которые могут принимать значения null / undefined, разве что вы полностью уверены в том, что делаете.Если переменная может принимать эти значения, то добавьте для них отдельные проверки.
-  
+
 // ?Итого
 // Операторы сравнения возвращают значения логического типа.
 // Строки сравниваются посимвольно в лексикографическом порядке.
@@ -702,14 +702,14 @@ console.log('result', result)
 // Обязательная часть кода
 if (year < 1015) {
   console.log('Это ОЧЕНЬ рано...')
-// Необязательная часть кода. Может повторяться для разных условий сколько угодно раз
+  // Необязательная часть кода. Может повторяться для разных условий сколько угодно раз
 } else if (year < 2015) {
   console.log('Это слишком рано')
 } else if (year > 2015) {
   console.log('Это поздновато')
 } else if (year > 3015) {
   console.log('Вряд ли')
-// Необязательная часть кода. Может применяться только раз. Сработает, если всё, что было выше не сработало
+  // Необязательная часть кода. Может применяться только раз. Сработает, если всё, что было выше не сработало
 } else {
   console.log('Верно!')
 }
@@ -769,15 +769,15 @@ console.log(message);
 // Если это верно – возвращает 'Здравствуйте!'.В противном случае, возвращает выражение после последнего двоеточия – 'Какой необычный возраст!'.
 // Вот как это выглядит при использовании if..else:
 
-  if (age < 3) {
-    message = 'Здравствуй, малыш!';
-  } else if (age < 18) {
-    message = 'Привет!';
-  } else if (age < 100) {
-    message = 'Здравствуйте!';
-  } else {
-    message = 'Какой необычный возраст!';
-  }
+if (age < 3) {
+  message = 'Здравствуй, малыш!';
+} else if (age < 18) {
+  message = 'Привет!';
+} else if (age < 100) {
+  message = 'Здравствуйте!';
+} else {
+  message = 'Какой необычный возраст!';
+}
 
 // ?При чтении глаза сканируют код по вертикали.Блоки кода, занимающие несколько строк, воспринимаются гораздо легче, чем длинный горизонтальный набор инструкций.
 // !Смысл оператора «вопросительный знак» ? – вернуть то или иное значение, в зависимости от условия.Пожалуйста, используйте его именно для этого.Когда вам нужно выполнить разные ветви кода – используйте if.
@@ -813,7 +813,7 @@ a = 1
 
 // break - обязательная инструкция, если мы не хотим, чтобы исполнилось всё подряд
 
-switch(a) {
+switch (a) {
   case 1: // (a===1)
     console.log('Маловато 1')
     break
@@ -973,7 +973,7 @@ console.log('1 && 2 && 3', 1 && 2 && 3); // 3
 
 // Сначала приводит аргумент к логическому типу true / false.
 // Затем возвращает противоположное значение.
-  
+
 console.log('!true', !true); // false
 console.log('!0', !0); // true
 // В частности, двойное НЕ!! используют для преобразования значений к логическому типу:
@@ -1148,10 +1148,10 @@ console.log('+(0.1 + 0.2).toFixed(2)', +(0.1 + 0.2).toFixed(2)) // 0.30
 // Документация по объекту Math.Библиотека маленькая, но содержит всё самое важное.
 
 function randomInteger(min: number, max: number) {
-  return Math.floor(Math.random()*(max-min+1)+min)
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-randomInteger(0,5)
+randomInteger(0, 5)
 
 
 // Итого
@@ -1166,8 +1166,923 @@ randomInteger(0,5)
 // Строки также имеют ещё кое - какие полезные методы:
 
 // str.trim() — убирает пробелы в начале и конце строки.
-//   str.repeat(n) — повторяет строку n раз.
+// str.repeat(n) — повторяет строку n раз.
 // …и другие, которые вы можете найти в справочнике.
 // Для строк предусмотрены методы для поиска и замены с использованием регулярных выражений.Но это отдельная большая тема, поэтому ей посвящена отдельная глава учебника Регулярные выражения.
 
 // Также, на данный момент важно знать, что строки основаны на кодировке Юникод, и поэтому иногда могут возникать проблемы со сравнениями.Подробнее о Юникоде в главе Юникод, внутреннее устройство строк.
+
+// ******  Циклы ******
+
+// ?while - цикл с предусловием; Сначала проверяем условие, потом идём в тело цикла
+// while (условие) { Тело цикла выполняется пока условие истинно, иначе управление переходит на следующую строку после цикла (цикл заканчивается)
+//   Тело цикла
+// }
+
+let i = 1
+let n1 = 5
+console.log('Цикл while')
+while (i <= n1) {
+  console.log(i)
+  i++
+}
+
+// 1. инициация итератора
+// 2. проверка условия
+// После проверки условия, если оно истинно, выполняется тело цикла. Если ложно,- выход
+// 3. После каждого выполнения тела цикла делаем шаг итератора
+// 4(2). проверка условия
+
+// ?for (инициация итератора; условие; шаг итератора) {
+//   Тело цикла
+// }
+
+// Выполнить начало
+// → (Если условие == true → Выполнить тело, Выполнить шаг)
+// → (Если условие == true → Выполнить тело, Выполнить шаг)
+// → (Если условие == true → Выполнить тело, Выполнить шаг)
+// → ...
+
+console.log('Цикл for')
+for (let i = 1; i <= n1; i++) {
+  console.log(i)
+}
+
+// Бесконечный цикл с условием выхода
+i=0
+while (true) {
+  if (i > 500) break
+  // if(i%100==0) continue
+  i+=50
+  if(i%100==0) continue
+  console.log(i)
+}
+
+// ?do while - цикл с постусловием; Сначала выполняем тело цикла, потом проверяем условие
+// do {
+//   Тело цикла
+// } while (Условие) Тело цикла выполняется пока условие истинно, иначе управление переходит на следующую строку после цикла (цикл заканчивается)
+
+// let number1
+// do {
+//   // @ts-ignore
+//   number1 = +prompt('Введи число больше 0')
+// } while (!number1 || number1<=0)
+
+// alert(`количество 0 = ${n1}
+// количество положительных 2
+// `)
+
+// Вариант с меткой
+// outer: for (let i = 0; i < 3; i++) {
+//   for (let j = 0; j < 3; j++) {
+//     let input = prompt(`Значение на координатах (${i},${j})`, '');
+//     // если пустая строка или Отмена, то выйти из обоих циклов
+//     if (!input) break outer; // (*)
+//     // сделать что-нибудь со значениями...
+//   }
+// }
+
+// Директива continue также может быть использована с меткой.В этом случае управление перейдёт на следующую итерацию цикла с меткой
+
+// Вариант с флагом
+// let stopOuter = false // (Флаг)
+// for (let i = 0; i < 3; i++) {
+//   if (stopOuter) break
+//   for (let j = 0; j < 3; j++) {
+//     let input = prompt(`Значение на координатах (${i},${j})`, '');
+//     // если пустая строка или Отмена, то выйти из обоих циклов
+//     if (!input) {
+//       stopOuter = true
+//       break
+//     } // (*)
+//     // сделать что-нибудь со значениями...
+//   }
+// }
+
+// Чётные без %
+// for (let i = 2; i < 11; i += 2) {
+//   alert(i)
+// }
+
+// Вывести простые числа
+// Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1.
+// Другими словами, n > 1 – простое, если при его делении на любое число кроме 1 и n есть остаток.
+// Например, 5 это простое число, оно не может быть разделено без остатка на 2, 3 и 4.
+// Напишите код, который выводит все простые числа из интервала от 2 до n.
+// Для n = 10 результат должен быть 2, 3, 5, 7.
+// P.S.Код также должен легко модифицироваться для любых других интервалов.
+
+// const maxNumber = +(prompt('До какого числа искать простые') as string)
+// console.log(`Простые числа до ${maxNumber}`)
+// for (let i=2; i<maxNumber;i++) {
+//   let isSimple = true
+//   for (let j=2; j<i; j++) {
+//     if (i%j==0) {
+//       isSimple=false
+//       break
+//     }
+//   }
+//   if (isSimple) console.log(i)
+// }
+
+// console.log(`second`)
+// outer:
+// for (let i = 2; i < maxNumber; i++) {
+//   for (let j = 2; j < i; j++) {
+//     if (!(i % j)) continue outer
+//   }
+//   console.log(i)
+// }
+
+
+// !Цикл выполнятеся, пока условие истинно
+// !Условие всегда автоматически преобразуется к булеву
+
+// ? while(условие) {тело цикла}
+// ? do {тело цикла} while(условие)
+// ? for (начало, условие, шаг) {тело цикла}
+
+while (false) {
+  console.log('никогда не выполнится')
+}
+while (true) {
+  console.log('выполнится только раз, т.к. дальше break')
+  break
+}
+
+do {
+  console.log('выполнится только раз, т.к. условие ложно')
+} while (false)
+
+console.log('do...while один раз исполнит тело цикла, даже если условите ложно')
+i = 5
+do {
+  console.log(i)
+  i++
+} while (i < 4)
+
+console.log('while никогда не исполнит тело цикла, если условите ложно')
+i = 5
+while (i < 3) {
+  console.log(i)
+  i++
+}
+
+for (let i = 0; i < 10; i += 2) {
+  console.log(i)
+}
+
+for (let i = 0; i < 3; i++) {
+  console.log('i', i)
+  for (let j = 0; j < 3; j++) {
+    console.log('   j', j)
+  }
+}
+
+console.log('break')
+
+for (let i = 0; i < 4; i++) {
+  if (i == 2) break
+  console.log('i', i)
+}
+
+console.log('continue')
+
+for (let i = 0; i < 6; i++) {
+  if (!(i % 2)) continue
+  console.log('i', i)
+}
+
+// Вывести простые числа
+// Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1.
+// Другими словами, n > 1 – простое, если при его делении на любое число кроме 1 и n есть остаток.
+// Например, 5 это простое число, оно не может быть разделено без остатка на 2, 3 и 4.
+// Напишите код, который выводит все простые числа из интервала от 2 до n.
+// Для n = 10 результат должен быть 2, 3, 5, 7.
+// P.S.Код также должен легко модифицироваться для любых других интервалов.
+
+console.log('find simple')
+n = 10
+for (let i = 2; i <= n; i++) {
+  // Предполагаем, что число простое
+  let isSimple = true
+  for (let j = 2; j < i; j++) {
+    // Проверям, что число простое
+    if (i % j == 0) {
+      // Выяснили, что число не простое
+      isSimple = false
+      break
+    }
+  }
+  // Если число простое, то выводим его
+  if (isSimple) console.log(i)
+}
+
+
+console.log('find simple без флага')
+n = 10
+number: for (let i = 2; i <= n; i++) {
+  for (let j = 2; j < i; j++) {
+    console.log('i', i, 'j', j)
+    // Проверям, что число простое
+    if (i % j == 0) {
+      // number - имя метки, которое мы придумали
+      continue number
+    }
+  }
+  console.log(i)
+}
+
+for (let i = 0; i < 'word'.length; i++) {
+  console.log(i, 'word'[i])
+}
+
+for (let letter of 'word') {
+  console.log(letter)
+}
+
+
+// let answer = true
+// while (answer) {
+//   let intNumb1 = parseFloat(prompt('Введите число/цифру, которое хотите вычислить', '12') as string)
+//   let intSign = prompt('Введите знак, который будет вычислять', '+ - * /')
+//   let intNumb2 = parseFloat(prompt('Введите число/цыфру, которое хотите вычислить', '12') as string)
+//   let res = 0
+//   switch (intSign) {
+//     case '-':
+//       res = intNumb1 - intNumb2
+//       break
+//     case '+':
+//       res = intNumb1 + intNumb2
+//       break
+//     case '*':
+//       res = intNumb1 * intNumb2
+//       break
+//     case '/':
+//       res = intNumb1 / intNumb2
+//       break
+//   }
+//   answer = confirm(`Результат ${res}. Посчитать что-нибудь ещё?`)
+// }
+
+// Запросить у пользователя число и на сколько цифр его
+// сдвинуть.Сдвинуть цифры числа и вывести результат(если
+// число 123456 сдвинуть на 2 цифры, то получится 345612).
+
+let numStr = '123456'
+let shift = 3
+
+let newNumStr = ''
+for (let i = shift; i < numStr.length; i++) {
+  newNumStr += numStr[i]
+  console.log(i, numStr[i], newNumStr)
+}
+for (let i = 0; i < shift; i++) {
+  newNumStr += numStr[i]
+  console.log(i, numStr[i], newNumStr)
+}
+console.log(+newNumStr)
+
+// Запросить 2 числа и найти только наибольший общий делитель.
+
+// let intNumb1 = Math.abs(parseFloat(prompt('Введите первое число, для нахождения общего делителя', '18') as string))
+// let intNumb2 = Math.abs(parseFloat(prompt('Введите второе число, для нахождения общего делителя', '99') as string))
+
+// // Меньее на большее ровно поделиться не может
+// // Найдём, какое из чисел меньше
+
+// let min = intNumb1 > intNumb2 ? intNumb2 : intNumb1
+
+// if (intNumb1 > intNumb2) {
+//   min = intNumb2
+// } else {
+//   min = intNumb1
+// }
+
+// // Нашли минимальное. Теперь посмотрим, на какие числа до минимального делятся оба без остатка
+// // Все общие делители
+// console.log('Все общие делители')
+// for (let i = 1; i <= min; i++) {
+//   if (intNumb1%i==0 && intNumb2%i==0) {
+//     console.log(i)
+//   }
+// }
+// console.log('Наибольший общий делитель')
+// for (let i = min; i > 0; i--) {
+//   if (intNumb1%i==0 && intNumb2%i==0) {
+//     console.log(i)
+//     break
+//   }
+// }
+
+// let day = true;
+// let nextDay = prompt('Напишите сегодняшний день, чтобы увидеть следующий', 'Пятница') as string;
+// while (day) {
+
+//   switch (nextDay) {
+//     case 'Понедельник':
+//       nextDay = 'Вторник'
+//       break
+//     case 'Вторник':
+//       nextDay = 'Среда'
+//       break
+//     case 'Среда':
+//       nextDay = 'Четверг'
+//       break
+//     case 'Четверг':
+//       nextDay = 'Пятница'
+//       break
+//     case 'Пятница':
+//       nextDay = 'Суббота'
+//       break
+//     case 'Суббота':
+//       nextDay = 'Воскресенье'
+//       break
+//     case 'Воскресенье':
+//       nextDay = 'Понедельник'
+//       break
+//     default:
+//       nextDay = 'Понедельник'
+// }
+
+//   day = confirm(`Cледующий день ${nextDay}, хотите узнать следующий день?`);
+// }
+
+
+// !Функции
+
+// function имя(параметры) {
+//   ...тело...
+// }
+
+// Функция, объявленная церез ключевое слово function как бы всплывает в самый верх кода. Поэтому её можно вызвать в любом месте
+showMessage1(1520) // Вызов функции
+
+function showMessage1(stringNumber:number) {
+  console.log('Всем привет из функции! Функция вызвана из строки', stringNumber)
+  // функции имеют доступ к глобальным переменным
+  console.log('global i', i)
+}
+
+showMessage1(1526) // Вызов функции
+console.log(showMessage1) // выводится тело функции
+
+// ! Функции всегда что-то возвращают. Если нет явного возврата значения, функция вернёт undefined
+console.log(showMessage1(1530)) // undefined
+
+
+// ! Область видимости
+
+// ? Глобальная область видимости - это просто код, который мы писали везде до этого (кроме кода в фигурных скобках,-тело цикла, тело if/else, тело функции)
+// Переменные, объявленные в глобальной области видимости дорступны везде
+// Объявление переменной - это ключевые слова let, const, function
+
+// ? Локальная область видимости - это код, внутри любых фигурных скобок
+// Переменные, объявленные в локальной области видимости доступны в рамках фигурных скобок, в которых они объявлены, и во всех нижестоящих локальных уровнях
+console.log('global i',i)
+// здесь j объявляется в локальной области видимости цикла for
+for (let j=0; j<2; j++) {
+  console.log('j', j) // 0,1
+  if (j==0) {
+    console.log('j==0', j) // 0,1
+    const z = 0
+    console.log('z', z) 
+    let i =0
+    i++
+    console.log('local i',i)
+  }
+  //console.log('z', z) //z is not defined
+}
+console.log('global i',i)
+
+// перепишем for в while
+// Обернул в if, который всегда сработает, чтобы создать локальную область видимости
+if (true) {
+  let j = 0
+  while(j<2) {
+    console.log('j', j) // 0,1
+    j++
+  }
+}
+
+// j не существует в глобальной области видимости. Не объявлена выше по коду
+// console.log('j', j) //j is not defined
+
+let j = 10 // переменная j объявлена и существует
+console.log('j', j)
+
+
+// !Параметры
+// ?Мы можем передать внутрь функции любую информацию, используя параметры.
+// В нижеприведённом примере функции передаются два параметра: from и text.
+
+function showMessage(from:any, text='Многозначительно молчит...') { // параметры: from, text
+  from = '*' + from + '*'; // немного украсим "from"
+  console.log('local from', from);
+  // return
+  // console.log(from + ': ' + text);
+}
+
+showMessage('Аня', 'Привет!'); // *Аня*: Привет! (*)
+showMessage('Аня', "Как дела?"); // *Аня*: Как дела? (**)
+// Когда функция вызывается в строках(*) и(**), переданные значения копируются в локальные переменные from и text.Затем они используются в теле функции.
+
+// Вот ещё один пример: у нас есть переменная from, и мы передаём её функции.Обратите внимание: функция изменяет значение from, но это изменение не видно снаружи.Функция всегда получает только копию значения:
+
+
+let from = "Ваня";
+
+showMessage(from, "Привет"); // *Ваня*: Привет
+showMessage(from)
+
+// значение "from" осталось прежним, функция изменила значение локальной переменной
+console.log('global from',from) // Ваня
+
+// Значение, передаваемое в качестве параметра функции, также называется аргументом.
+
+// Параметр – это переменная, указанная в круглых скобках в объявлении функции.
+// Аргумент – это значение, которое передаётся функции при её вызове.
+// Мы объявляем функции со списком параметров, затем вызываем их, передавая аргументы.
+
+// Рассматривая приведённый выше пример, мы могли бы сказать: "функция showMessage объявляется с двумя параметрами, затем вызывается с двумя аргументами: from и "Привет"".
+
+function checkAge1(age:number) {
+  if (age >= 18) {
+    return true;
+  } else {
+    return confirm('А родители разрешили?');
+  }
+}
+// Более короткий вариант записи 1
+function checkAge2(age:number) {
+  if (age >= 18) {
+    return true;
+  }
+  return confirm('А родители разрешили?');
+}
+// Более короткий вариант записи 2
+function checkAge3(age:number) {
+  return (age >= 18) ? true : confirm('А родители разрешили?')
+}
+
+// Написать функцию, которая принимает 2 числа и знак (+ - * /), считает пример и возвращает результат.
+function calc(n1=5, n2=8, sign='*') {
+  switch (sign) {
+    case '-':
+      return n1-n2
+    case '+':
+      return n1+n2
+    case '*':
+      return n1*n2
+    case '/':
+      return n1/n2
+  }
+}
+
+console.log("calc()", calc())
+console.log("calc(2,6,'-')", calc(2,6,'-'))
+
+// Написать функцию, которая принимает от 1 до 5 чисел и возвращает их сумму.
+function getSum(n1:number,n2=0,n3=0,n4=0,n5=0) {
+  return n1 + n2 + n3 + n4 + n5
+}
+getSum(1,2,5)
+
+// TS-style Функция, которая может принять неограниченное количество переменных
+function getNSum(n1:number,...args:any) {
+  let sum = n1
+  for (let i=0;i<args.length;i++) {
+    sum+=args[i]
+  }
+  return sum
+}
+
+console.log(getNSum(1,5,8,9,4,7,65,4,5,8,46,698,46,65))
+
+console.log(getNSum2(1))
+
+// JS-style Функция, которая может принять неограниченное количество переменных
+function getNSum2(n1: number, ...args: any) {
+  console.log(arguments) // массив всех значений, которые пришли в функцию
+  console.log(args)      // args - общепринятое именование для дополнительных параметров функции
+  // тоже является массивом, но в него попадут только те аргументы, которые переданы сверх именованных
+  
+  let sum = 0
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i]
+  }
+  return sum
+}
+
+console.log(getNSum2(1,0,2,6,5))
+
+function pow(x: number, n: number) {
+  console.log(n)
+  return (n == 1) ? x : (x * pow(x, n - 1));
+}
+
+function factorial(n:number):number {
+  if (n==1) return n
+  return n * factorial(n-1)
+  return 5 * 4* 3* 2* 1
+  return 5 * stack * 1
+  return 5 * stack * 2 * 1
+  return 5 * stack * 3 * 2
+  return 5 * 4 * 6
+}
+
+console.log(factorial(5))
+
+function strSum(s:string) {
+  let n = +s
+  if (n==1) return n
+  return s + strSum((n-1).toString())
+}
+
+console.log(strSum('5'))
+
+// !Function expression
+
+// ?function declaration (объявление функции)
+function sayHi1() {
+  alert("Привет");
+}
+
+// ?function expression (присваивание функции)
+let sayHi2 = function () {
+  alert("Привет");
+};
+
+console.log(sayHi1)
+console.log(sayHi2)
+
+// Функция это значение.Поэтому мы можем работать с ней так же, как и с другими видами значений.
+// Мы можем скопировать функцию в другую переменную:
+
+function sayHi() {   // (1) создаём
+  console.log("Привет")
+}
+let func = sayHi;    // (2) копируем
+func() // Привет     // (3) вызываем копию (работает)!
+sayHi() // Привет    //     эта тоже все ещё работает (почему бы и нет)
+
+// !!!Функции -«колбэки»
+
+function ask(question: string, yes: Function, no: Function) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+function showOk() {
+  alert("Вы согласны.");
+}
+
+function showCancel() {
+  alert("Вы отменили выполнение.");
+}
+
+// использование: функции showOk, showCancel передаются в качестве аргументов ask
+// !ask("Вы согласны?", showOk, showCancel);
+// !ask(
+// "Вы согласны?",
+//   function () { alert("Вы согласились."); },
+//   function () { alert("Вы отменили выполнение."); }
+// )
+// !ask(
+// "Вы согласны?",
+//   () => alert("Вы согласились."),
+//   () => alert("Вы отменили выполнение.")
+// )
+
+// ! Итого
+// ? Функции – это значения.Они могут быть присвоены, скопированы или объявлены в любом месте кода.
+// ? Если функция объявлена как отдельная инструкция в основном потоке кода, то это “Function Declaration”.
+// ? Если функция была создана как часть выражения, то это “Function Expression”.
+// ? Function Declaration обрабатываются перед выполнением блока кода.Они видны во всём блоке.
+// ? Функции, объявленные при помощи Function Expression, создаются только когда поток выполнения достигает их.
+
+// ! Стрелочные функции
+
+let sum: Function | null = (a:number, b:number) => a + b
+let epression = (a:number, b:number) => { 
+  a *=2
+  return a + b
+}
+
+/* Эта стрелочная функция представляет собой более короткую форму:
+
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+
+console.log(sum(1, 2)) // 3
+sum = null
+
+// Итого
+// Стрелочные функции очень удобны для простых действий, особенно для однострочных.
+
+// Они бывают двух типов:
+
+// Без фигурных скобок: (...args) => expression – правая сторона выражения: функция вычисляет его и возвращает результат.Скобки можно не ставить, если аргумент только один: n => n * 2.
+// С фигурными скобками: (...args) => { body } – скобки позволяют нам писать несколько инструкций внутри функции, но при этом необходимо явно вызывать return, чтобы вернуть значение.
+
+let xz: any = 5
+xz = "Вася"
+
+let uName = ''
+let toDos = [] as string[]
+
+const appDiv = document.getElementById('app')
+// if (appDiv) appDiv.innerHTML += `<p>Добро пожаловать на сайт</p>`
+function render() {
+  let isLogin = Boolean(uName)
+  if (appDiv) appDiv.innerHTML = ''
+  const pElelement = document.createElement('p')
+  pElelement.textContent = uName ? `${uName}, добро пожаловать на сайт` : `Добро пожаловать на сайт`
+  if (appDiv) appDiv.appendChild(pElelement) 
+  
+  const button = document.createElement('button')
+  button.textContent = isLogin ? 'LogOut' : 'Login'
+  button.addEventListener('click', ()=>{
+    uName = isLogin ? '' : 'Niko'
+    toDos = !isLogin ? ['проснуться', 'позавтракать', 'умыться', 'работать', 'лечь спать'] : []
+    render()
+  })
+  if (appDiv) appDiv.appendChild(button) 
+  if (isLogin) {
+    const olElement = document.createElement('ol')
+    // for (let i=0;i<toDos.length;i++) {
+    //   const listElement = document.createElement('li')
+    //   listElement.textContent = toDos[i]
+    //   olElement.appendChild(listElement)
+    // }
+    for (let el of toDos) {
+      const listElement = document.createElement('li')
+      listElement.textContent = el
+      olElement.appendChild(listElement)
+    }
+    if (appDiv) appDiv.appendChild(olElement)
+  }
+}
+
+render()
+
+const userO = {               // объект
+  name: "John",             // под ключом "name" хранится значение "John"
+  age: 30,                  // под ключом "age" хранится значение 30
+  "likes birds": true,      // имя свойства из нескольких слов должно быть в кавычках
+  'backgound-color': 'red',
+  0: 10,
+} as Record<string,any>
+
+console.log(userO)
+console.log({...userO})
+console.log(userO.name)
+console.log(userO[0])
+console.log(userO['backgound-color'])
+
+
+const key = 'backgound-color'
+console.log(userO[key])
+
+userO.isAdmin = true
+console.log({...userO})
+
+delete userO[0]
+delete userO.isLogin
+delete userO['backgound-color']
+console.log({...userO})
+
+function makeUser(name:string='', age:number=0) {
+  return {
+    // вместо такой записи, где мы отдельно прописываем имя свойства, а значение берём из одноимённой переменной
+    // name:name,
+    // age:age,
+    // мы можем просто указать имена переменных
+    // В таком случае имя переменной станет именем свойства, а её значение,- значением свойства
+    name, // тоже самое, что и name:name
+    age,  // тоже самое, что и age:age
+    admin:false,
+    key: 20,
+    noValue: undefined,
+  } as any
+}
+
+const usr1 = makeUser('Niko', 35)
+console.log(usr1)
+
+// При обращении к свойству, которого нет, возвращается undefined.Это позволяет просто проверить существование свойства:
+// Для чего вообще нужен оператор in? Разве недостаточно сравнения с undefined ?
+
+// В большинстве случаев прекрасно сработает сравнение с undefined.Но есть особый случай, когда оно не подходит и нужно использовать "in".
+
+
+console.log('"age" in usr1', "age" in usr1)    // true, usr1.age существует
+console.log('"blabla" in usr1', "blabla" in usr1) // false, usr1.blabla не существует
+console.log('usr1.blabla === undefined', usr1.blabla === undefined) // true, usr1.blabla не существует
+// Это когда свойство существует, но содержит значение undefined
+console.log('"noValue" in usr1', "noValue" in usr1) // true, usr1.noValue существует
+console.log('usr1.noValue === undefined', usr1.noValue === undefined) // true, usr1.noValue существует, но его значение = undefined
+console.log('usr1.noValue === undefined', usr1['noValue'] === undefined) // true, usr1.noValue существует, но его значение = undefined
+
+// Подобные ситуации случаются очень редко, так как undefined обычно явно не присваивается.Для «неизвестных» или «пустых» свойств мы используем значение null
+
+// !Цикл "for..in"
+// На каждой итерации цикла в переменную key попадают имена свойств объекта (строкой)
+for (let key in usr1) {
+  console.log('key', key, 'value', usr1[key])
+}
+
+// Получить все ключи объекта массивом
+const keys = Object.keys(usr1)
+console.log(keys)
+console.log(Object.values(usr1))
+console.log(Object.entries(usr1)[2])
+
+
+// Итого
+// Объекты – это ассоциативные массивы с рядом дополнительных возможностей.
+
+// Они хранят свойства(пары ключ - значение), где:
+
+// Ключи свойств должны быть строками или символами(обычно строками).
+// Значения могут быть любого типа.
+// Чтобы получить доступ к свойству, мы можем использовать:
+
+// Запись через точку: obj.property.
+// Квадратные скобки obj["property"].Квадратные скобки позволяют взять ключ из переменной, например, obj[varWithKey].
+// Дополнительные операторы:
+
+// Удаление свойства: delete obj.prop.
+// Проверка существования свойства: "key" in obj.
+// Перебор свойств объекта: цикл for for (let key in obj).
+// То, что мы изучали в этой главе, называется «простым объектом» («plain object») или просто Object.
+
+// В JavaScript есть много других типов объектов:
+
+// Array для хранения упорядоченных коллекций данных,
+// Date для хранения информации о дате и времени,
+// Error для хранения информации об ошибке.
+// … и так далее.
+// У них есть свои особенности, которые мы изучим позже.Иногда люди говорят что - то вроде «тип данных Array» или «тип данных Date», но формально они не являются отдельными типами, а относятся к типу данных Object.Они лишь расширяют его различными способами.
+
+// Задание
+// Создать объект, описывающий прямоугольник(хранит коор -
+// динаты левой верхней и правой нижней точек), и написать следу -
+// ющие функции для работы с таким объектом.
+
+type Rect = {
+  x0:number,
+  y0:number,
+  x1:number,
+  y1:number,
+}
+
+const rect:Rect = {
+  x0:50,
+  y0:50,
+  x1:100,
+  y1:100,
+}
+
+const rectDiv = document.getElementById('rect')
+
+const moveLeftTopButton = document.getElementById('moveLeftTop')
+moveLeftTopButton?.addEventListener('click', () => { changeRectPosition(rect, -10, -10) })
+const moveTopButton = document.getElementById('moveTop')
+moveTopButton?.addEventListener('click', () => { changeRectPositionY(rect, -10) })
+const moveRightTopButton = document.getElementById('moveRightTop')
+moveRightTopButton?.addEventListener('click', () => { changeRectPosition(rect, 10, -10) })
+const moveLeftButton = document.getElementById('moveLeft')
+moveLeftButton?.addEventListener('click', () => { changeRectPositionX(rect, -10) })
+const moveRightButton = document.getElementById('moveRight')
+moveRightButton?.addEventListener('click', () => { changeRectPositionX(rect, 10) })
+const moveLeftBottomButton = document.getElementById('moveLeftBottom')
+moveLeftBottomButton?.addEventListener('click', () => { changeRectPosition(rect, -10, 10) })
+const moveBottomButton = document.getElementById('moveBottom')
+moveBottomButton?.addEventListener('click', () => { changeRectPositionY(rect, 10) })
+const moveRightBottomButton = document.getElementById('moveRightBottom')
+moveRightBottomButton?.addEventListener('click', () => { changeRectPosition(rect, 10, 10) })
+
+const squeezeX = document.getElementById('squeezeX')
+squeezeX?.addEventListener('click', () => { changeRectWidth(rect, -10) })
+const expandX = document.getElementById('expandX')
+expandX?.addEventListener('click', () => { changeRectWidth(rect, 10) })
+const squeezeY = document.getElementById('squeezeY')
+squeezeY?.addEventListener('click', () => { changeRectHeight(rect, -10) })
+const expandY = document.getElementById('expandY')
+expandY?.addEventListener('click', () => { changeRectHeight(rect, 10) })
+
+
+console.log(rectDiv)
+function renderRect(rect:Rect) {
+  if (rectDiv) {
+    rectDiv.style.top = rect.y0 + 'px'
+    rectDiv.style.left = rect.x0 + 'px'
+    rectDiv.style.width = getRectWidth(rect) + 'px'
+    rectDiv.style.height = getRectHeight(rect) + 'px'
+  }
+}
+renderRect(rect)
+
+// 1 Функция принимает объект - прямоугольник и выводит
+// информацию о нем(где какая точка расположена).
+
+function showRectInfo(rect: Rect) {
+  console.log(`top-left (${rect.x0}, ${rect.y0}) bootom-rigth (${rect.x1}, ${rect.y1})`)
+}
+showRectInfo(rect)
+
+// 2 Функция принимает объект - прямоугольник и возвращает
+// его ширину.
+
+function getRectWidth(rect: Rect) {
+  return rect.x1 - rect.x0
+}
+
+// 3 Функция принимает объект - прямоугольник и возвращает
+// его высоту.
+
+function getRectHeight(rect: Rect) {
+  return rect.y1 - rect.y0
+}
+
+// 4 Функция принимает объект - прямоугольник и возвращает
+// его площадь.
+
+function getRectArea(rect: Rect) {
+  return getRectWidth(rect) * getRectHeight(rect)
+}
+console.log(`площадь прямоугольника ${getRectArea(rect)}px`)
+
+// 5 Функция принимает объект - прямоугольник и возвращает
+// его периметр.
+
+function getRectPerimetr(rect: Rect) {
+  return getRectWidth(rect) * 2 + getRectHeight(rect) * 2 
+}
+console.log(`периметр прямоугольника ${getRectPerimetr(rect)}px`)
+
+// 6 Функция изменения ширины прямоугольника.Она прини -
+// мает объект - прямоугольник и на сколько единиц изменить
+// ширину.
+
+function changeRectWidth(rect: Rect, n:number) {
+  rect.x1 += n
+  renderRect(rect)
+}
+
+// 7 Функция изменения высоты прямоугольника.Она прини -
+// мает объект - прямоугольник и на сколько единиц изменить
+// высоту.
+
+function changeRectHeight(rect: Rect, n: number) {
+  rect.y1 += n
+  renderRect(rect)
+}
+
+// 8 Функция изменения ширины и высоты прямоугольника.
+// Она принимает объект - прямоугольник и два значения –
+// для изменения ширины и высоты.
+
+function changeRectWidthAndHeight(rect: Rect, x: number, y:number) {
+  changeRectWidth(rect, x)
+  changeRectHeight(rect, y)
+  renderRect(rect)
+}
+
+// 9 Функция смещения прямоугольника по оси X.Она при -
+// нимает объект - прямоугольник и на сколько единиц его
+// сдвинуть.
+
+function changeRectPositionX(rect: Rect, n: number) {
+  rect.x0 += n
+  rect.x1 += n
+  renderRect(rect)
+}
+
+// 10 Функция смещения прямоугольника по оси Y.Она при -
+// нимает объект - прямоугольник и на сколько единиц его
+// сдвинуть.
+
+function changeRectPositionY(rect: Rect, n: number) {
+  rect.y0 += n
+  rect.y1 += n
+  renderRect(rect)
+}
+
+// 11 Функция смещения прямоугольника и по оси X и по
+// оси Y.Она принимает объект - прямоугольник и два значе -
+// ния: сдвиг по оси X и сдвиг по оси Y.
+
+function changeRectPosition(rect: Rect, x: number, y: number) {
+  changeRectPositionX(rect, x)
+  changeRectPositionY(rect, y)
+  renderRect(rect)
+}
+
+// 12 Функция для проверки, находится ли точка внутри пря -
+// моугольника.Она принимает объект - прямоугольник и
+// координаты точки.
