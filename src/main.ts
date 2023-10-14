@@ -3034,3 +3034,475 @@ shuffle(arr)
 // for (let key in count) {
 //   console.log(`${key}: ${count[key]}`);
 // }
+
+
+//  Агрегирование данных: У вас есть массив объектов с числовыми значениями (например, продажами товаров за месяц). 
+let arrayOfGoods = [
+  {
+    name: 'vans knew school',
+    quantity: 1,
+    price: 15600
+  },
+  {
+    name: 'adidas campus',
+    quantity: 1,
+    price: 17400
+  },
+  {
+    name: 'nike air trainer',
+    quantity: 1,
+    price: 22300
+  },
+] as any
+// Найдите сумму, среднее и максимальное значение этих числовых данных.
+function averagePrice(arrayOfGoods: any) {
+  const agregate = {
+    sum:0,
+    average:0,
+    max:0
+  }
+  agregate.sum = arrayOfGoods.reduce((sum:number, el:any) => sum += el.quantity * el.price,0)
+  agregate.average = agregate.sum/arrayOfGoods.length
+  agregate.max = Math.max(...arrayOfGoods.map((el:any)=>el.quantity*el.price))
+  return agregate
+}
+console.log(averagePrice(arrayOfGoods))
+
+console.log('Object.keys(arrayOfGoods[0])')
+for (let el of Object.keys(arrayOfGoods[0])) {
+  console.log(el, arrayOfGoods[0][el])
+}
+console.log('Object.values(arrayOfGoods[0])')
+for (let el of Object.values(arrayOfGoods[0])) {
+  console.log(el)
+}
+console.log('Object.entries(arrayOfGoods[0])', Object.entries(arrayOfGoods[0]))
+for (let el of Object.entries(arrayOfGoods[0])) {
+  console.log(el, el[0], el[1])
+}
+
+// Трансформации объекта
+// У объектов нет множества методов, которые есть в массивах, например map, filter и других.
+
+// Если мы хотели бы их применить, то можно использовать Object.entries с последующим вызовом Object.fromEntries:
+
+// Вызов Object.entries(obj) возвращает массив пар ключ / значение для obj.
+// На нём вызываем методы массива, например, map.
+// Используем Object.fromEntries(array) на результате, чтобы преобразовать его обратно в объект.
+// Например, у нас есть объект с ценами, и мы хотели бы их удвоить:
+
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+let doublePrices = Object.fromEntries(
+  // преобразовать в массив, затем map, затем fromEntries обратно объект
+  Object.entries(prices).map(([key, value]) => [key, value * 2])
+);
+
+console.log(doublePrices.meat); // 8
+
+// Деструктуризация массива
+// Вот пример деструктуризации массива на переменные:
+
+// у нас есть массив с именем и фамилией
+arr = ["Ilya", "Kantor", "Kantor", "Kantor5", "Kantor"] as any
+
+// деструктурирующее присваивание
+// записывает firstName = arr[0]
+// и surname = arr[1]
+let [,,, surname1] = arr
+
+console.log(surname1) // Kantor5
+
+// Теперь мы можем использовать переменные вместо элементов массива.
+// Отлично смотрится в сочетании со split или другими методами, возвращающими массив:
+
+// !Если мы хотим не просто получить первые значения, но и собрать все остальные, то мы можем добавить ещё один параметр, который получает остальные значения, используя оператор «остаточные параметры» – троеточие("..."):
+let [firstName2, surname2, ...rest] = "Ilya Kantor gdfgdeg sdfsd f".split(' ')
+console.log(firstName2) // Ilya
+console.log(surname2)  // Kantor
+console.log(rest)  //остальные
+
+// !Переменная rest является массивом из оставшихся элементов.
+
+// !Вместо rest можно использовать любое другое название переменной, просто убедитесь, что перед переменной есть три точки и она стоит на последнем месте в деструктурирующем присваивании.
+
+// Присваивайте чему угодно с левой стороны
+// Мы можем использовать что угодно «присваивающее» с левой стороны.
+
+// Например, можно присвоить свойству объекта:
+
+user = {} as any
+[user.name, user.surname] = "Ilya Kantor".split(' ');
+
+console.log(user.name); // Ilya
+console.log(user.surname); // Kantor
+
+// !цикл по ключам и значениям с деструктуризацией
+for (let [key, value] of Object.entries(user)) {
+  console.log(`${key}:${value}`)
+}
+
+// Трюк обмена переменных
+// Существует хорошо известный трюк для обмена значений двух переменных с использованием деструктурирующего присваивания:
+
+let guest = "Jane"
+let admin = "Pete"
+
+// Давайте поменяем местами значения: сделаем guest = "Pete", а admin = "Jane"
+;[guest, admin] = [admin, guest]
+
+console.log(`${guest} ${admin}`) // Pete Jane (успешно заменено!)
+// Здесь мы создаём временный массив из двух переменных и немедленно деструктурируем его в порядке замены.
+// Таким образом, мы можем поменять местами даже более двух переменных.
+
+// !Если мы хотим, чтобы значение «по умолчанию» заменило отсутствующее, мы можем указать его с помощью =:
+
+// значения по умолчанию
+let [name1 = "Guest", surname = "Anonymous"] = ["Julius"];
+
+console.log(name1);    // Julius (из массива)
+console.log(surname); // Anonymous (значение по умолчанию)
+// !Значения по умолчанию могут быть гораздо более сложными выражениями или даже функциями.Они выполняются, только если значения отсутствую
+
+
+
+
+
+// !Итого
+// ?Деструктуризация позволяет разбивать объект или массив на переменные при присвоении.
+
+// ?Полный синтаксис для объекта:
+
+// let { prop: varName = default, ...rest } = object
+
+// Cвойство prop объекта object здесь должно быть присвоено переменной varName.Если в объекте отсутствует такое свойство, переменной varName присваивается значение по умолчанию.
+
+// Свойства, которые не были упомянуты, копируются в объект rest.
+
+// ?Полный синтаксис для массива:
+
+// let [item1 = default , item2, ...rest] = array
+// Первый элемент отправляется в item1; второй отправляется в item2, все остальные элементы попадают в массив rest.
+
+// Можно извлекать данные из вложенных объектов и массивов, для этого левая сторона должна иметь ту же структуру, что и правая.
+
+
+// !Написать функцию, которая проверяет, является ли пере-
+// данная строка палиндромом.
+
+function polindom(str:string) {
+  const i = Math.floor(str.length/2)
+  if (str.length%2) {
+    return str.slice(0, i) == str.slice(i + 1).split('').reverse().join('')
+  } 
+  return str.slice(0, i) == str.slice(i).split('').reverse().join('')
+}
+
+console.log(polindom('1234321'))
+console.log(polindom('1234320'))
+console.log(polindom('123321'))
+console.log(polindom('123320'))
+
+function sum1(a: number, b: number, ...rest: number[]) {
+  return a + b + rest.reduce((sum,el)=>sum+el)
+}
+function sum2(...остальные: number[]) {
+  return остальные.reduce((sum,el)=>sum+el)
+}
+
+console.log(sum1(1, 2, 3, 4, 5))
+console.log(sum2(...[1, 2, 3, 4, 5]))
+
+const arrCopy = [...arr]
+console.log(arrCopy)
+const objCopy = {...arr}
+console.log(objCopy)
+
+;(function mergeArr() {
+  let arr = [3, 5, 1]
+  let arr2 = [8, 9, 15]
+  let merged = [0, ...arr, 2, ...arr2].sort((a,b)=>a-b)
+  console.log(merged)
+})()
+
+// !Array.from преобразует перебираемый объект в массив
+// ?между Array.from(obj) и[...obj] есть разница:
+
+// Array.from работает как с псевдомассивами, так и с итерируемыми объектами
+// Оператор расширения работает только с итерируемыми объектами
+// Выходит, что если нужно сделать из чего угодно массив, то Array.from — более универсальный метод.
+
+// Итого
+// Когда мы видим "..." в коде, это могут быть как остаточные параметры (REST), так и оператор расширения (SPREAD)
+
+// Как отличить их друг от друга:
+
+// Если ... располагается в конце списка параметров функции, то это «остаточные параметры». Он собирает остальные неуказанные аргументы и делает из них массив.
+// Если ... встретился в вызове функции или где - либо ещё, то это «оператор расширения». Он извлекает элементы из массива.
+// Полезно запомнить:
+
+// Остаточные параметры используются, чтобы создавать новые функции с неопределённым числом аргументов.
+// С помощью оператора расширения можно вставить массив в функцию, которая по умолчанию работает с обычным списком аргументов.
+// Вместе эти конструкции помогают легко преобразовывать наборы значений в массивы и обратно
+
+// @ts-ignore
+console.log(varVar)
+var varVar = 10
+console.log(varVar)
+var varVar = 20
+console.log(varVar)
+
+
+// С помощью блоков {... } мы можем изолировать часть кода, выполняющую свою собственную задачу, с переменными, принадлежащими только ей:
+
+{
+  // показать сообщение
+  let message = "Hello"
+  console.log(message)
+}
+
+{
+  // показать другое сообщение
+  let message = "Goodbye"
+  console.log(message)
+}
+
+console.log(message)
+
+// Для if, for, while и т.д.переменные, объявленные в блоке кода {... }, также видны только внутри:
+
+if (true) {
+  let phrase = "Hello";
+  console.log(phrase); // Hello
+}
+
+// alert(phrase); // Ошибка, нет такой переменной!
+
+// !И это замечательно, поскольку это позволяет нам создавать блочно-локальные переменные, относящиеся только данному блоку кода
+
+// !!!Вложенные функции
+
+function makeCounter(count:number) {
+  const countersDiv = document.getElementById('counters')
+  const button = document.createElement('button')
+  button.textContent = count.toFixed()
+  button.onclick = function () {
+    button.textContent = (++count).toFixed()
+  }
+  countersDiv?.append(button)
+}
+
+makeCounter(0)
+makeCounter(5)
+makeCounter(10)
+
+
+// !Замыкания
+// В программировании есть общий термин: «замыкание», – который должен знать каждый разработчик.
+
+//   Замыкание – это функция, которая запоминает свои внешние переменные и может получить к ним доступ.В некоторых языках это невозможно, или функция должна быть написана специальным образом, чтобы получилось замыкание.Но, как было описано выше, в JavaScript, все функции изначально являются замыканиями(есть только одно исключение, про которое будет рассказано в Синтаксис "new Function").
+
+// То есть они автоматически запоминают, где были созданы, с помощью скрытого свойства[[Environment]], и все они могут получить доступ к внешним переменным.
+
+// !Когда на собеседовании фронтенд - разработчику задают вопрос: «что такое замыкание ?», – правильным ответом будет определение замыкания и объяснения того факта, что все функции в JavaScript являются замыканиями, и, может быть, несколько слов о технических деталях: свойстве[[Environment]] и о том, как работает лексическое окружение.
+
+// Сумма с помощью замыканий
+// важность: 4
+// Напишите функцию sum, которая работает таким образом: sum(a)(b) = a + b.
+
+// Да, именно таким образом, используя двойные круглые скобки(не опечатка).
+
+// Например:
+
+function closureSum(a:number) {
+  return function(b:number) {
+    return a+b
+  }
+}
+
+console.log(closureSum(1)(2))
+console.log(closureSum(5)(-1))
+
+// Каррирование
+const operand4 = closureSum(4)
+console.log(operand4(-2))
+console.log(operand4(2))
+console.log(operand4(12))
+
+// Функция - конструктор
+// Функции - конструкторы технически являются обычными функциями.Но есть два соглашения:
+
+// Имя функции - конструктора должно начинаться с большой буквы.
+// Функция - конструктор должна выполняться только с помощью оператора "new".
+
+// this это {} (пустой объект)
+const User = (function (this:Record<string,any>, name:string) {
+  // во время создания нового объекта при помощи оператора new, в this присваивается пустой объект
+  // this = {};  (неявно)
+
+  // выполняется тело функции.Обычно оно модифицирует this, добавляя туда новые свойства
+  // добавляет свойства к this
+  this.name = name  
+  this.isAdmin = false
+  this.isLogin = function () {
+    return false
+  }
+  // неявно возвращается this
+  // return this (неявно)
+}) as any
+
+class NewUser {
+  name
+  isAdmin
+  constructor(name:string) {
+    this.name = name
+    this.isAdmin = false
+  }
+  isLogin() {
+    return false
+  }
+}
+
+// Таким образом, let user = new User("Jack") возвращает тот же результат, что и:
+
+// let user = {
+//   name: "Jack",
+//   isAdmin: false
+// }
+
+console.log({ name: 'noJack1', admin: true, isLogin() {return false} })
+console.log(new User('Jack'))
+console.log(new NewUser('Pirat'))
+
+
+// Используя специальное свойство new.target внутри функции, мы можем проверить, вызвана ли функция при помощи оператора new или без него.
+
+// В случае обычного вызова функции new.target будет undefined.Если же она была вызвана при помощи new, new.target будет равен самой функции.
+const User1 = (function (this:any, name:string) {
+  console.log(new.target)
+  if (!new.target) { // в случае, если вы вызвали меня без оператора new
+    return new User1(name) // ...я добавлю new за вас
+  }
+
+  this.name = name
+}) as any
+
+let john = User1("John") // переадресовывает вызов на new User
+let john1 = new User1("John") // переадресовывает вызов на new User
+console.log(john.name) // John
+
+// !Возврат значения из конструктора, return
+// Обычно конструкторы не имеют оператора return.Их задача – записать все необходимое в this, и это автоматически становится результатом.
+
+// Но если return всё же есть, то применяется простое правило:
+
+// При вызове return с объектом, вместо this вернётся объект.
+// При вызове return с примитивным значением, оно проигнорируется.
+// Другими словами, return с объектом возвращает этот объект, во всех остальных случаях возвращается this.
+
+// Функции-конструкторы или просто конструкторы, являются обычными функциями, но существует общепринятое соглашение именовать их с заглавной буквы.
+// Функции-конструкторы следует вызывать только с помощью new. Такой вызов подразумевает создание пустого this в начале и возврат заполненного в конце.
+// Мы можем использовать конструкторы для создания множества похожих объектов.
+
+console.log(new Date()) 
+
+// Геттеры (получатели) и сеттеры (устанавливатели) - методы объекта, ведущие себя как свойства
+
+const car = {
+  name: 'tio',
+  _fuel: 10,
+  getFuel() {
+    return this._fuel
+  },
+  // геттер всегда что-то возвращает
+  get fuel() {
+    return this._fuel
+  },
+  setFuel(val:number) {
+    this._fuel+=val
+  },
+  // сеттер всегда что-то устанавливает
+  set refuel(val:number) {
+    this._fuel+=val
+  },
+  get refuel() {
+    return this._fuel
+  }
+}
+
+console.log(car.getFuel())
+car.setFuel(10)
+console.log(car.fuel) // сработал геттер
+car.refuel = 20 // сработал сеттер
+console.log(car.fuel)
+
+const student = {
+  name: 'Asd',
+  surname: 'Daf',
+  get fullname() {
+    return `${this.name} ${this.surname}`
+  },
+  set fullname(fio:string) {
+    ;[this.name, this.surname] = fio.split(' ')
+  },
+  toString() {
+    return `I'm student ${this.fullname}`
+  }
+}
+
+console.log(student)
+console.log(student.fullname)
+student.fullname = 'fsda sgflkj ывфвв'
+console.log(student.fullname)
+console.log(student)
+console.log(student.toString())
+
+// В объектно-ориентированном программировании класс – это расширяемый шаблон кода для создания объектов, который устанавливает в них начальные значения (свойства) и реализацию поведения (методы).
+
+// В JavaScript класс – это разновидность функции.
+
+//   Взгляните:
+
+// class User {
+//   constructor(name) { this.name = name; }
+//   sayHi() { alert(this.name); }
+// }
+
+// доказательство: User - это функция
+// alert(typeof User); // function
+// Вот что на самом деле делает конструкция class User {... }:
+
+// Создаёт функцию с именем User, которая становится результатом объявления класса.Код функции берётся из метода constructor(она будет пустой, если такого метода нет).
+// Сохраняет все методы, такие как sayHi, в User.prototype.
+// При вызове метода объекта new User он будет взят из прототипа, как описано в главе F.prototype.Таким образом, объекты new User имеют доступ к методам класса.
+
+// класс - это функция
+console.log(typeof NewUser); // function
+
+// ...или, если точнее, это метод constructor
+console.log(NewUser === NewUser.prototype.constructor); // true
+
+// Методы находятся в User.prototype, например:
+console.log(NewUser.prototype.isLogin); // sayHi() { alert(this.name); }
+
+// в прототипе ровно 2 метода
+console.log(Object.getOwnPropertyNames(NewUser.prototype)); // constructor, sayHi
+
+// Базовый синтаксис для классов выглядит так:
+
+// class MyClass {
+//   prop = value; // свойство
+//   constructor(...) { // конструктор
+//     // ...
+//   }
+//   method(...) { } // метод
+//   get something(...) { } // геттер
+//   set something(...) { } // сеттер
+//   [Symbol.iterator]() { } // метод с вычисляемым именем (здесь - символом)
+//   // ...
+// }
+// MyClass технически является функцией(той, которую мы определяем как constructor), в то время как методы, геттеры и сеттеры записываются в MyClass.prototype.
