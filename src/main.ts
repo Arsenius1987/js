@@ -4011,3 +4011,8 @@ let clock = new ExtendedClock({ template: 'h:m:s' })
 const timerButtons = document.querySelectorAll('#timer button') as NodeListOf<HTMLButtonElement>
 timerButtons[0].addEventListener('click', () => clock.start())
 timerButtons[1].addEventListener('click', () => clock.stop())
+
+
+
+
+

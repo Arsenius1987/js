@@ -7,7 +7,7 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <a href="https://disk.yandex.ru/d/KwdXQropyuL3Iw" target="_blank">Материалы, ДЗ и практика</a>
+    <a id="href" href="https://disk.yandex.ru/d/KwdXQropyuL3Iw" target="_blank">Материалы, ДЗ и практика</a>
     <a href="https://disk.yandex.ru/d/52LeM6eF1NeKig" target="_blank">Видео</a>
     <ol>
       <li>Скачать Node.js с сайта. Версия 18. Усьтановить</li>
@@ -17,7 +17,22 @@
       <li>В терминале написать 'npm i' и нажать enter</li>
       <li>В терминале написать 'npm run dev', нажать enter, перейти по ссылке</li>
     </ol>
+    <div id="timer">
+      <p style="font-size: 24px; padding-left: 40px;"></p>
+      <button>start</button>
+      <button>stop</button>
+    </div>
+    <div id="counters"></div>
+
+    <iframe style="width: 100%; height: 500px; border: none;" allowfullscreen></iframe>
+
     <div id="app"></div>
+
+    <input id="name" type="text" placeholder="Наименование">
+    <input id="quantity" type="number" placeholder="Количество">
+    <button id="add">Добавить</button>
+    <div id="purshases"></div>
+
     <div style="display: grid; grid-template-columns: 2fr 1fr; height: 500px;">
       <div id="canvas" style="position: relative;">
         <div id="rect" style="background-color: blueviolet; position: absolute;"></div>
