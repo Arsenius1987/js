@@ -1,4 +1,4 @@
-import './style.css'
+// import './style.css'
 // Комментарий
 // alert('Я JS')
 console.log('Я JS') // выводит в консоль "Я JS"
@@ -24,7 +24,7 @@ let m = 1
 // объявили несколько переменных через запятую
 // let user = 'John', age = 25, message = 'Hello'
 // Но лучше определять переменные на новой строке
-let user:any = 'John'
+let user: any = 'John'
 let age = 25
 let message = 'Hello'
 console.log('значение переменной user', user)
@@ -203,11 +203,11 @@ let phrase = `Обратные ${2 + 3}
 console.log('str2', str2)
 console.log('phrase', phrase)
 
-let name = 'Женя'
+let name2 = 'Женя'
 age = 23
 
 // Такое встраивание хначений в строку называется интерполяцией
-console.log(`Привет, меня зовут ${name}.
+console.log(`Привет, меня зовут ${name2}.
 Мне ${age} лет.
 Через месяц мне будет ${age + 1}`)
 
@@ -1209,12 +1209,12 @@ for (let i = 1; i <= n1; i++) {
 }
 
 // Бесконечный цикл с условием выхода
-i=0
+i = 0
 while (true) {
   if (i > 500) break
   // if(i%100==0) continue
-  i+=50
-  if(i%100==0) continue
+  i += 50
+  if (i % 100 == 0) continue
   console.log(i)
 }
 
@@ -1519,7 +1519,7 @@ console.log(+newNumStr)
 // Функция, объявленная церез ключевое слово function как бы всплывает в самый верх кода. Поэтому её можно вызвать в любом месте
 showMessage1(1520) // Вызов функции
 
-function showMessage1(stringNumber:number) {
+function showMessage1(stringNumber: number) {
   console.log('Всем привет из функции! Функция вызвана из строки', stringNumber)
   // функции имеют доступ к глобальным переменным
   console.log('global i', i)
@@ -1540,27 +1540,27 @@ console.log(showMessage1(1530)) // undefined
 
 // ? Локальная область видимости - это код, внутри любых фигурных скобок
 // Переменные, объявленные в локальной области видимости доступны в рамках фигурных скобок, в которых они объявлены, и во всех нижестоящих локальных уровнях
-console.log('global i',i)
+console.log('global i', i)
 // здесь j объявляется в локальной области видимости цикла for
-for (let j=0; j<2; j++) {
+for (let j = 0; j < 2; j++) {
   console.log('j', j) // 0,1
-  if (j==0) {
+  if (j == 0) {
     console.log('j==0', j) // 0,1
     const z = 0
-    console.log('z', z) 
-    let i =0
+    console.log('z', z)
+    let i = 0
     i++
-    console.log('local i',i)
+    console.log('local i', i)
   }
   //console.log('z', z) //z is not defined
 }
-console.log('global i',i)
+console.log('global i', i)
 
 // перепишем for в while
 // Обернул в if, который всегда сработает, чтобы создать локальную область видимости
 if (true) {
   let j = 0
-  while(j<2) {
+  while (j < 2) {
     console.log('j', j) // 0,1
     j++
   }
@@ -1577,7 +1577,7 @@ console.log('j', j)
 // ?Мы можем передать внутрь функции любую информацию, используя параметры.
 // В нижеприведённом примере функции передаются два параметра: from и text.
 
-function showMessage(from:any, text='Многозначительно молчит...') { // параметры: from, text
+function showMessage(from: any, text = 'Многозначительно молчит...') { // параметры: from, text
   from = '*' + from + '*'; // немного украсим "from"
   console.log('local from', from);
   // return
@@ -1597,7 +1597,7 @@ showMessage(from, "Привет"); // *Ваня*: Привет
 showMessage(from)
 
 // значение "from" осталось прежним, функция изменила значение локальной переменной
-console.log('global from',from) // Ваня
+console.log('global from', from) // Ваня
 
 // Значение, передаваемое в качестве параметра функции, также называется аргументом.
 
@@ -1607,7 +1607,7 @@ console.log('global from',from) // Ваня
 
 // Рассматривая приведённый выше пример, мы могли бы сказать: "функция showMessage объявляется с двумя параметрами, затем вызывается с двумя аргументами: from и "Привет"".
 
-function checkAge1(age:number) {
+function checkAge1(age: number) {
   if (age >= 18) {
     return true;
   } else {
@@ -1615,50 +1615,50 @@ function checkAge1(age:number) {
   }
 }
 // Более короткий вариант записи 1
-function checkAge2(age:number) {
+function checkAge2(age: number) {
   if (age >= 18) {
     return true;
   }
   return confirm('А родители разрешили?');
 }
 // Более короткий вариант записи 2
-function checkAge3(age:number) {
+function checkAge3(age: number) {
   return (age >= 18) ? true : confirm('А родители разрешили?')
 }
 
 // Написать функцию, которая принимает 2 числа и знак (+ - * /), считает пример и возвращает результат.
-function calc(n1=5, n2=8, sign='*') {
+function calc(n1 = 5, n2 = 8, sign = '*') {
   switch (sign) {
     case '-':
-      return n1-n2
+      return n1 - n2
     case '+':
-      return n1+n2
+      return n1 + n2
     case '*':
-      return n1*n2
+      return n1 * n2
     case '/':
-      return n1/n2
+      return n1 / n2
   }
 }
 
 console.log("calc()", calc())
-console.log("calc(2,6,'-')", calc(2,6,'-'))
+console.log("calc(2,6,'-')", calc(2, 6, '-'))
 
 // Написать функцию, которая принимает от 1 до 5 чисел и возвращает их сумму.
-function getSum(n1:number,n2=0,n3=0,n4=0,n5=0) {
+function getSum(n1: number, n2 = 0, n3 = 0, n4 = 0, n5 = 0) {
   return n1 + n2 + n3 + n4 + n5
 }
-getSum(1,2,5)
+getSum(1, 2, 5)
 
 // TS-style Функция, которая может принять неограниченное количество переменных
-function getNSum(n1:number,...args:any) {
+function getNSum(n1: number, ...args: any) {
   let sum = n1
-  for (let i=0;i<args.length;i++) {
-    sum+=args[i]
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i]
   }
   return sum
 }
 
-console.log(getNSum(1,5,8,9,4,7,65,4,5,8,46,698,46,65))
+console.log(getNSum(1, 5, 8, 9, 4, 7, 65, 4, 5, 8, 46, 698, 46, 65))
 
 console.log(getNSum2(1))
 
@@ -1667,7 +1667,7 @@ function getNSum2(n1: number, ...args: any) {
   console.log(arguments) // массив всех значений, которые пришли в функцию
   console.log(args)      // args - общепринятое именование для дополнительных параметров функции
   // тоже является массивом, но в него попадут только те аргументы, которые переданы сверх именованных
-  
+
   let sum = 0
   for (let i = 0; i < arguments.length; i++) {
     sum += arguments[i]
@@ -1675,17 +1675,17 @@ function getNSum2(n1: number, ...args: any) {
   return sum
 }
 
-console.log(getNSum2(1,0,2,6,5))
+console.log(getNSum2(1, 0, 2, 6, 5))
 
 function pow(x: number, n: number) {
   console.log(n)
   return (n == 1) ? x : (x * pow(x, n - 1));
 }
 
-function factorial(n:number):number {
-  if (n==1) return n
-  return n * factorial(n-1)
-  return 5 * 4* 3* 2* 1
+function factorial(n: number): number {
+  if (n == 1) return n
+  return n * factorial(n - 1)
+  return 5 * 4 * 3 * 2 * 1
   return 5 * stack * 1
   return 5 * stack * 2 * 1
   return 5 * stack * 3 * 2
@@ -1694,10 +1694,10 @@ function factorial(n:number):number {
 
 console.log(factorial(5))
 
-function strSum(s:string) {
+function strSum(s: string) {
   let n = +s
-  if (n==1) return n
-  return s + strSum((n-1).toString())
+  if (n == 1) return n
+  return s + strSum((n - 1).toString())
 }
 
 console.log(strSum('5'))
@@ -1764,9 +1764,9 @@ function showCancel() {
 
 // ! Стрелочные функции
 
-let sum: Function | null = (a:number, b:number) => a + b
-let epression = (a:number, b:number) => { 
-  a *=2
+let sum: Function | null = (a: number, b: number) => a + b
+let epression = (a: number, b: number) => {
+  a *= 2
   return a + b
 }
 
@@ -1801,16 +1801,16 @@ function render() {
   if (appDiv) appDiv.innerHTML = ''
   const pElelement = document.createElement('p')
   pElelement.textContent = uName ? `${uName}, добро пожаловать на сайт` : `Добро пожаловать на сайт`
-  if (appDiv) appDiv.appendChild(pElelement) 
-  
+  if (appDiv) appDiv.appendChild(pElelement)
+
   const button = document.createElement('button')
   button.textContent = isLogin ? 'LogOut' : 'Login'
-  button.addEventListener('click', ()=>{
+  button.addEventListener('click', () => {
     uName = isLogin ? '' : 'Niko'
     toDos = !isLogin ? ['проснуться', 'позавтракать', 'умыться', 'работать', 'лечь спать'] : []
     render()
   })
-  if (appDiv) appDiv.appendChild(button) 
+  if (appDiv) appDiv.appendChild(button)
   if (isLogin) {
     const olElement = document.createElement('ol')
     // for (let i=0;i<toDos.length;i++) {
@@ -1835,10 +1835,10 @@ const userO = {               // объект
   "likes birds": true,      // имя свойства из нескольких слов должно быть в кавычках
   'backgound-color': 'red',
   0: 10,
-} as Record<string,any>
+} as Record<string, any>
 
 console.log(userO)
-console.log({...userO})
+console.log({ ...userO })
 console.log(userO.name)
 console.log(userO[0])
 console.log(userO['backgound-color'])
@@ -1848,14 +1848,14 @@ const key = 'backgound-color'
 console.log(userO[key])
 
 userO.isAdmin = true
-console.log({...userO})
+console.log({ ...userO })
 
 delete userO[0]
 delete userO.isLogin
 delete userO['backgound-color']
-console.log({...userO})
+console.log({ ...userO })
 
-function makeUser(name:string='', age:number=0) {
+function makeUser(name: string = '', age: number = 0) {
   return {
     // вместо такой записи, где мы отдельно прописываем имя свойства, а значение берём из одноимённой переменной
     // name:name,
@@ -1864,7 +1864,7 @@ function makeUser(name:string='', age:number=0) {
     // В таком случае имя переменной станет именем свойства, а её значение,- значением свойства
     name, // тоже самое, что и name:name
     age,  // тоже самое, что и age:age
-    admin:false,
+    admin: false,
     key: 20,
     noValue: undefined,
   } as any
@@ -1934,17 +1934,17 @@ console.log(Object.entries(usr1)[2])
 // ющие функции для работы с таким объектом.
 
 type Rect = {
-  x0:number,
-  y0:number,
-  x1:number,
-  y1:number,
+  x0: number,
+  y0: number,
+  x1: number,
+  y1: number,
 }
 
-const rect:Rect = {
-  x0:50,
-  y0:50,
-  x1:100,
-  y1:100,
+const rect: Rect = {
+  x0: 50,
+  y0: 50,
+  x1: 100,
+  y1: 100,
 }
 
 const rectDiv = document.getElementById('rect')
@@ -1977,7 +1977,7 @@ expandY?.addEventListener('click', () => { changeRectHeight(rect, 10) })
 
 
 console.log(rectDiv)
-function renderRect(rect:Rect) {
+function renderRect(rect: Rect) {
   if (rectDiv) {
     rectDiv.style.top = rect.y0 + 'px'
     rectDiv.style.left = rect.x0 + 'px'
@@ -2021,7 +2021,7 @@ console.log(`площадь прямоугольника ${getRectArea(rect)}px`
 // его периметр.
 
 function getRectPerimetr(rect: Rect) {
-  return getRectWidth(rect) * 2 + getRectHeight(rect) * 2 
+  return getRectWidth(rect) * 2 + getRectHeight(rect) * 2
 }
 console.log(`периметр прямоугольника ${getRectPerimetr(rect)}px`)
 
@@ -2029,7 +2029,7 @@ console.log(`периметр прямоугольника ${getRectPerimetr(rec
 // мает объект - прямоугольник и на сколько единиц изменить
 // ширину.
 
-function changeRectWidth(rect: Rect, n:number) {
+function changeRectWidth(rect: Rect, n: number) {
   rect.x1 += n
   renderRect(rect)
 }
@@ -2047,7 +2047,7 @@ function changeRectHeight(rect: Rect, n: number) {
 // Она принимает объект - прямоугольник и два значения –
 // для изменения ширины и высоты.
 
-function changeRectWidthAndHeight(rect: Rect, x: number, y:number) {
+function changeRectWidthAndHeight(rect: Rect, x: number, y: number) {
   changeRectWidth(rect, x)
   changeRectHeight(rect, y)
   renderRect(rect)
@@ -2094,10 +2094,10 @@ function changeRectPosition(rect: Rect, x: number, y: number) {
 user = {
   name: "John",
   age: 30,
-  drivePermission:{
-    A:true,
-    B:true,
-    C:false
+  drivePermission: {
+    A: true,
+    B: true,
+    C: false
   },
   // canDriveC() {
   //   return this.drivePermission.C
@@ -2193,20 +2193,20 @@ user = {
 
 // Функция написанная специально, чтобы использоваться как метод объекта
 // !"this" внутри функции - это объект "перед точкой"
-function sayName(this:any) {
+function sayName(this: any) {
   console.log(this)
 }
 
 const bus = [
-  {name:'sfd'},
-  {name:'sdgtrey'},
-  {name:'uytty'},
-  {name:'mvmbnmytj'},
-  {name:'jkljlyu'},
-  {bag:'20*20*30'}
+  { name: 'sfd' },
+  { name: 'sdgtrey' },
+  { name: 'uytty' },
+  { name: 'mvmbnmytj' },
+  { name: 'jkljlyu' },
+  { bag: '20*20*30' }
 ] as any
 
-for (let i=0;i<bus.length;i++) {
+for (let i = 0; i < bus.length; i++) {
   if (bus[i].name) {
     bus[i].sayName = sayName
     bus[i].sayName()
@@ -2274,8 +2274,8 @@ const calculator = {
   a: 0,
   b: 0,
   read() {
-    this.a = +(prompt('Введите первое число')as string)
-    this.b = +(prompt('Введите второе число')as string)
+    this.a = +(prompt('Введите первое число') as string)
+    this.b = +(prompt('Введите второе число') as string)
   },
   sum() {
     return this.a + this.b
@@ -2318,10 +2318,10 @@ function caclOvercomingTheDistance(distance: number, carInfo: any) {
   for (let carKey in carInfo) {
     const car = carInfo[carKey]
     const timeWithoutStops = distance / car.averageSpeed
-    const timeWithStops = timeWithoutStops + Math.floor(timeWithoutStops/4)
+    const timeWithStops = timeWithoutStops + Math.floor(timeWithoutStops / 4)
     console.log(`На автомобиле ${car.manufacturer} ${car.model} ${car.yearOfRelease} года выпуска, для преодоления дистанции в ${distance} км. с олтдыхом каждые 4 часа пути, потребуется ${timeWithStops.toFixed(2)} ч.`)
     console.log(`Без остановок эту дистанцию можно преодолеть за ${timeWithoutStops.toFixed(2)} ч.`)
-  }  
+  }
 }
 caclOvercomingTheDistance(800, carInfo)
 
@@ -2379,11 +2379,11 @@ for (let carKey in carObjArr) {
   const car = carObjArr[carKey] // доступ к объекту
   if (typeof carObjArr[carKey] == 'object') {
     console.log('carKey', carKey)
-    console.log('carObjArr['+carKey+']', carObjArr[carKey])
+    console.log('carObjArr[' + carKey + ']', carObjArr[carKey])
   }
 }
 
-console.log('Object keys',Object.keys(carObjArr))
+console.log('Object keys', Object.keys(carObjArr))
 console.log('Object values', Object.values(carObjArr))
 console.log('Object entries', Object.entries(carObjArr))
 
@@ -2418,7 +2418,7 @@ for (let car of carArr) {
   console.log('car', car)
 }
 
-const nums = [46,654894,321,65465,32,4869,431,346598]
+const nums = [46, 654894, 321, 65465, 32, 4869, 431, 346598]
 console.log('nums', nums)
 
 console.log('for of')
@@ -2426,7 +2426,7 @@ for (let num of nums) {
   console.log('num', num)
 }
 console.log('classic for')
-for (let i=0;i<nums.length;i++) {
+for (let i = 0; i < nums.length; i++) {
   console.log('num', nums[i])
 }
 
@@ -2436,7 +2436,7 @@ for (let l of wodrStr) {
   console.log('letter', l)
 }
 console.log('classic for')
-for (let i = 0; i < wodrStr.length;i++) {
+for (let i = 0; i < wodrStr.length; i++) {
   console.log('letter', wodrStr[i])
 }
 
@@ -2447,9 +2447,9 @@ for (let i = 0; i < wodrStr.length;i++) {
 
 // TS автоматически при присвоении считывает тип данных элементов
 // const numsArr: number[]
-const numsArr = [1,2,3,5,4,8]
+const numsArr = [1, 2, 3, 5, 4, 8]
 // const strsArr: string[]
-const strsArr = ['1','2','3','5',"4","8"]
+const strsArr = ['1', '2', '3', '5', "4", "8"]
 
 // const objArr: {
 // a: number;
@@ -2457,11 +2457,11 @@ const strsArr = ['1','2','3','5',"4","8"]
 // c: number;
 // }[]
 const objArr = [
-  {a:1,b:2,c:3},
-  {a:1,b:2,c:3},
-  {a:1,b:2,c:3},
-  {a:1,b:2,c:3},
-] as Record<string,number|string>[]
+  { a: 1, b: 2, c: 3 },
+  { a: 1, b: 2, c: 3 },
+  { a: 1, b: 2, c: 3 },
+  { a: 1, b: 2, c: 3 },
+] as Record<string, number | string>[]
 // as any[]
 objArr[0].d = '140'
 
@@ -2492,13 +2492,13 @@ const quantityInput = document.getElementById('quantity') as HTMLInputElement
 const addButton = document.getElementById('add') as HTMLElement
 const purshasesDiv = document.getElementById('purshases') as HTMLElement
 
-purshasesDiv.addEventListener('click', (event)=>{
+purshasesDiv.addEventListener('click', (event) => {
   const target = event.target as HTMLElement
   if (target.tagName != 'BUTTON') return
   togglePurchased(listProducts, target.dataset.name)
 })
 
-addButton.addEventListener('click', ()=>{
+addButton.addEventListener('click', () => {
   addPurchase(listProducts, nameInput.value, +quantityInput.value)
   nameInput.value = ''
   quantityInput.value = ''
@@ -2506,7 +2506,7 @@ addButton.addEventListener('click', ()=>{
 
 function showProducts(listProducts: any) {
   purshasesDiv.innerHTML = ''
-   // Вывод некупленных продуктов
+  // Вывод некупленных продуктов
   purshasesDiv.innerHTML += '<p>Некупленные продукты:</p><ol>'
   for (let product of listProducts) {
     if (!product.purchased)
@@ -2514,7 +2514,7 @@ function showProducts(listProducts: any) {
     <button data-name="${product.name}">V</button></li>`
   }
   purshasesDiv.innerHTML += '</ol>'
-  
+
   // Вывод купленных продуктов
   purshasesDiv.innerHTML += '<p>Купленные продукты:</p><ol>'
   for (let product of listProducts) {
@@ -2533,7 +2533,7 @@ showProducts(listProducts)
 // покупки с уже существующим в списке продуктом, необ-
 // ходимо увеличивать количество в существующей покупке,
 // а не добавлять новую.    
-function addPurchase(listProducts: any, productName: string, quantity:number) {
+function addPurchase(listProducts: any, productName: string, quantity: number) {
   for (let product of listProducts) {
     if (product.name == productName) {
       product.quantity += quantity
@@ -2581,8 +2581,8 @@ console.log(matrix[2][2]) // 9
 // …За исключением null и undefined, которые равны == друг другу и ничему больше.
 
 // @ts-ignore
-console.log('[1,2,3]==[1,2,3]',[1,2,3]==[1,2,3]) // false Массивы- это объекты, а объекты равны друг другу только по ссылке
-console.log('[1, 2, 3].toString() == [1, 2, 3].toString()',[1, 2, 3].toString() == [1, 2, 3].toString()) // true Подходит только для массивов с примитивами
+console.log('[1,2,3]==[1,2,3]', [1, 2, 3] == [1, 2, 3]) // false Массивы- это объекты, а объекты равны друг другу только по ссылке
+console.log('[1, 2, 3].toString() == [1, 2, 3].toString()', [1, 2, 3].toString() == [1, 2, 3].toString()) // true Подходит только для массивов с примитивами
 console.log('[{ a: 10 }, 2, 3].toString() == [{ a: 20 }, 2, 3].toString()', [{ a: 10 }, 2, 3].toString() == [{ a: 20 }, 2, 3].toString()) // true [object Object]. Не подходит для массивов с объектами
 console.log('[{ a: 10 }, 2, 3].toString()', [{ a: 10 }, 2, 3].toString())
 
@@ -2591,9 +2591,9 @@ console.log('[{ a: 10 }, 2, 3].toString()', [{ a: 10 }, 2, 3].toString())
 
 // Это просто: не используйте оператор ==.Вместо этого сравните их по элементам в цикле или используя методы итерации, описанные в следующей главе.
 
-function arrayCompare(arr1: any[], arr2: any[], strict:boolean) {
+function arrayCompare(arr1: any[], arr2: any[], strict: boolean) {
   if (arr1.length != arr2.length) return false
-  for (let i=0;i<arr1.length;i++) {
+  for (let i = 0; i < arr1.length; i++) {
     if ((typeof arr1[i] == 'object' && typeof arr2[i] != 'object') || (typeof arr1[i] != 'object' && typeof arr2[i] == 'object')) return false
     if (typeof arr1[i] == 'object') {
       const entr1 = Object.entries(arr1[i])
@@ -2626,8 +2626,8 @@ console.log(arrayCompare([1, 2, 3, { a: 20, b: { c: '5' } }], [1, 2, 3, { a: 20,
 let tempArr = [1, 2, 3, 5, 4, 8]
 
 // !Удаление
-console.log('origin', [...tempArr]) 
-console.log('deleted tempArr.splice(1)',tempArr.splice(1)) // Если передать только индекс начала (start), удалятся все элементы, начиная с этого индекса
+console.log('origin', [...tempArr])
+console.log('deleted tempArr.splice(1)', tempArr.splice(1)) // Если передать только индекс начала (start), удалятся все элементы, начиная с этого индекса
 console.log('result', tempArr)
 
 tempArr = [1, 2, 3, 5, 4, 8]
@@ -2662,7 +2662,7 @@ console.log('origin', [...tempArr])
 console.log('result tempArr.slice()', tempArr.slice()) // получаем копию массива. Идентично [...tempArr]
 // Если параметр end не указан, срез идёт до конца массива
 console.log('result tempArr.slice(3)', tempArr.slice(3)) // получаем срез массива, начиная с 3го индекса
-console.log('result tempArr.slice(3,5)', tempArr.slice(3,5)) // получаем срез массива, начиная с 3го индекса до 5го, не включая его 
+console.log('result tempArr.slice(3,5)', tempArr.slice(3, 5)) // получаем срез массива, начиная с 3го индекса до 5го, не включая его 
 
 // ?concat - объединение
 // Метод arr.concat создаёт новый массив, в который копирует данные из других массивов и дополнительные значения.
@@ -2689,11 +2689,11 @@ console.log('arr.concat([3, 4], 5, 6)', arr.concat([3, 4], 5, 6)) // 1,2,3,4,5,6
 // В функции доступен сам элемент, его индекс и весь массив
 
 // arr.forEach(function (el, i, arr) {
-arr.forEach((item, index, array) => array[index] = item**2)
+arr.forEach((item, index, array) => array[index] = item ** 2)
 console.log(arr)
 
 // Примерная реализация метода forEach
-function forEach(arr: any[], fn:Function) {
+function forEach(arr: any[], fn: Function) {
   for (let i = 0; i < arr.length; i++) {
     fn(arr[i], i, arr)
   }
@@ -2715,7 +2715,7 @@ function forEach(arr: any[], fn:Function) {
 // arr.includes(item, from) ищет item начиная с индекса from и возвращает true, если поиск успешен.
 // Обычно эти методы используются только с одним аргументом: искомым item.По умолчанию поиск ведется с начала.
 
-arr = ['sdf', 0, 5, 0, true,5,8,2,0,56,0,58,0] as any[]
+arr = ['sdf', 0, 5, 0, true, 5, 8, 2, 0, 56, 0, 58, 0] as any[]
 console.log(arr)
 console.log('arr.indexOf(0)', arr.indexOf(0)) // Ищем индекс значения 0 в массиве
 console.log('arr.indexOf(0,2)', arr.indexOf(0, 2))  // Ищем индекс значения 0 в массиве, начиная с индекса 2
@@ -2723,13 +2723,20 @@ console.log('arr.indexOf(false)', (arr as any[]).indexOf(false))  // Ищем и
 console.log('arr.includes(0)', arr.includes(0))  // Есть ли в массиве занчение 0
 console.log('arr.includes(0,4)', arr.includes(0, 4))  // Есть ли в массиве занчение 0, начиная с индекса 4
 
+function indexOf(arr: any[], val: any) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == val) return i
+  }
+  return -1
+}
+
 
 console.log('Найдём все индексы значения 0')
 i = 0
 do {
   i = arr.indexOf(0, i)
   if (i != -1) {
-    console.log(i) 
+    console.log(i)
     i++
   }
 } while (i != -1)
@@ -2744,16 +2751,16 @@ do {
 
 let mapArr = ["Бильбо", "Гэндальф", "Назгул"]
 let mapObjArr = [
-  { name: "Бильбо", atk: 10,},
+  { name: "Бильбо", atk: 10, },
   { name: "Гэндальф", atk: 50, },
-  { name: "Назгул", atk: 40,},
+  { name: "Назгул", atk: 40, },
 ]
-console.log(mapArr) 
-console.log(mapArr.map(el => el.toUpperCase())) 
+console.log(mapArr)
+console.log(mapArr.map(el => el.toUpperCase()))
 console.log(mapArr.map(el => el.length))
 console.log(mapObjArr.map(el => el.name))
 console.log(mapObjArr.map(el => el.atk))
-console.log(mapObjArr.map(el => 'Сила ' + el.name +' равна '+el.atk))
+console.log(mapObjArr.map(el => 'Сила ' + el.name + ' равна ' + el.atk))
 
 // !sort(fn)
 // ?Вызов arr.sort() сортирует массив на месте, меняя в нём порядок элементов.
@@ -2762,7 +2769,7 @@ console.log(mapObjArr.map(el => 'Сила ' + el.name +' равна '+el.atk))
 // Функция сравнения может вернуть любое число
 // На самом деле от функции сравнения требуется любое положительное число, чтобы сказать «больше», и отрицательное число, чтобы сказать «меньше».
 
-arr = [1, 2, 15,657,2,435,756,23,3]
+arr = [1, 2, 15, 657, 2, 435, 756, 23, 3]
 
 arr.sort((a, b) => a - b) // от порядка значений зависит порядок сортировки
 console.log(arr)
@@ -2783,10 +2790,1407 @@ console.log(names.split(', '))
 console.log(names.split(', ').join('; '))
 
 
-function anyCountParams(...args:any[]) {
+function anyCountParams(...args: any[]) {
   let sum = 0
-  args.forEach(el=>sum+=el)
+  args.forEach(el => sum += el)
   return sum
 }
 
-console.log(anyCountParams(1,2,4,6,7,89,45,532,5254,43234,)) 
+console.log(anyCountParams(1, 2, 4, 6, 7, 89, 45, 532, 5254, 43234,))
+
+// let result = arr.find(function (item, index, array) {
+//   если true - возвращается текущий элемент и перебор прерывается
+//   если все итерации оказались ложными, возвращается undefined
+// });
+// Функция вызывается по очереди для каждого элемента массива:
+
+// item – очередной элемент.
+// index – его индекс.
+// array – сам массив.
+// Если функция возвращает true, поиск прерывается и возвращается item.Если ничего не найдено, возвращается undefined.
+
+let users = [
+  { id: 1, name: "Вася" },
+  { id: 2, name: "Петя" },
+  { id: 3, name: "Маша" },
+]
+
+let findUser = users.find(item => item.id == 3)
+console.log(findUser)
+
+// Пример реализации метода массива find
+function find(arr: any[], fn: Function) {
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i, arr)) return arr[i]
+  }
+}
+
+// let result = arr.findIndex(function (item, index, array) {
+//   если true - возвращается индекс текущего элемента и перебор прерывается
+//   если все итерации оказались ложными, возвращается -1
+// });
+// Функция вызывается по очереди для каждого элемента массива:
+// Если функция возвращает true, поиск прерывается и возвращается index.Если ничего не найдено, возвращается -1.
+
+let findUserIndex = users.findIndex(item => item.id == 3)
+console.log(findUserIndex)
+
+// Пример реализации метода массива filter
+function findIndex(arr: any[], fn: Function) {
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i, arr)) return i
+  }
+  return -1
+}
+
+// Синтаксис схож с find, но filter возвращает массив из всех подходящих элементов, или пустой массив
+// let results = arr.filter(function (item, index, array) {
+//   если `true` -- элемент добавляется к results и перебор продолжается
+//   возвращается пустой массив в случае, если ничего не найдено
+// })
+
+let findUsers = users.filter(item => item.name.includes('я'))
+console.log(findUsers)
+
+// Пример реализации метода массива filter
+function filter(arr: any[], fn: Function) {
+  const newArr = [] as any
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i, arr)) newArr.push(arr[i])
+  }
+  return newArr
+}
+
+// Методы arr.reduce и arr.reduceRight похожи на методы выше, но они немного сложнее.Они используются для вычисления единого значения на основе всего массива.
+
+// let value = arr.reduce(function (accumulator, item, index, array) {
+//   ...
+// }, [initial]);
+
+// Функция применяется по очереди ко всем элементам массива и «переносит» свой результат на следующий вызов.
+
+//   Аргументы:
+//   accumulator – результат предыдущего вызова этой функции, равен initial при первом вызове(если передан initial),
+//   item – очередной элемент массива,
+//   index – его позиция,
+//   array – сам массив.
+
+// При вызове функции результат её предыдущего вызова передаётся на следующий вызов в качестве первого аргумента.
+
+// Так, первый аргумент является по сути аккумулятором, который хранит объединённый результат всех предыдущих вызовов функции.По окончании он становится результатом reduce.
+
+arr = [1, 2, 4, 6, 7, 89, 45, 532, 5254, 43234]
+let reduceSum = 0
+arr.forEach(el => reduceSum += el)
+console.log(reduceSum)
+
+reduceSum = arr.reduce((a, el) => a *= el)
+console.log(reduceSum)
+
+// objArr = [
+//   { a: 1, b: 2, c: 3 },
+//   { a: 1, b: 2, c: 3 },
+//   { a: 1, b: 2, c: 3 },
+//   { a: 1, b: 2, c: 3 },
+// ] as Record<string, number | string>[]
+
+const reduceObjSum = objArr.reduce((a, el: any) => a += el.c, 0)
+console.log(reduceObjSum)
+
+function reduceObjFunc(a: any, el: any, i: number) {
+  a[i] = el
+  // a[el.id] = el
+  return a
+}
+
+const reduceObj = objArr.reduce(reduceObjFunc, {})
+console.log(reduceObj)
+
+const newObj = {} as any
+for (let el of objArr) {
+  newObj[el.a] = el
+}
+for (let i = 0; i < objArr.length; i++) {
+  newObj[objArr[i].a] = objArr[i]
+}
+
+// Array.isArray
+// Массивы не образуют отдельный тип языка.Они основаны на объектах.
+// Поэтому typeof не может отличить простой объект от массива:
+
+console.log('typeof {}', typeof {}) // object
+console.log('typeof []', typeof []) // тоже object
+
+// …Но массивы используются настолько часто, что для этого придумали специальный метод: Array.isArray(value).Он возвращает true, если value массив, и false, если нет.
+
+console.log('Array.isArray({})', Array.isArray({})) // false
+console.log('Array.isArray([])', Array.isArray([])) // true
+
+
+// Итого
+// !Шпаргалка по методам массива:
+
+// ?Для добавления / удаления элементов:
+
+// push(...items) – добавляет элементы в конец,
+// pop() – извлекает элемент с конца,
+// shift() – извлекает элемент с начала,
+// unshift(...items) – добавляет элементы в начало.
+// splice(pos, deleteCount, ...items) – начиная с индекса pos удаляет deleteCount элементов и вставляет items.
+// slice(start, end) – создаёт новый массив, копируя в него элементы с индекса start до end(не включая end).
+// concat(...items) – возвращает новый массив: копирует все члены текущего массива и добавляет к нему items.Если какой - то из items является массивом, тогда берутся его элементы.
+
+// ?Для поиска среди элементов:
+
+// indexOf / lastIndexOf(item, pos) – ищет item, начиная с позиции pos, и возвращает его индекс или - 1, если ничего не найдено.
+// includes(value) – возвращает true, если в массиве имеется элемент value, в противном случае false.
+// find / filter(func) – фильтрует элементы через функцию и отдаёт первое / все значения, при прохождении которых через функцию возвращается true.
+// findIndex похож на find, но возвращает индекс вместо значения.
+
+// ?Для перебора элементов:
+
+// forEach(func) – вызывает func для каждого элемента.Ничего не возвращает.
+
+// ?Для преобразования массива:
+
+// map(func) – создаёт новый массив из результатов вызова func для каждого элемента.
+// sort(func) – сортирует массив «на месте», а потом возвращает его.
+// reverse() – «на месте» меняет порядок следования элементов на противоположный и возвращает изменённый массив.
+// split / join – преобразует строку в массив и обратно.
+// reduce / reduceRight(func, initial) – вычисляет одно значение на основе всего массива, вызывая func для каждого элемента и передавая промежуточный результат между вызовами.
+
+// ?Дополнительно:
+
+// Array.isArray(arr) проверяет, является ли arr массивом.
+// Пожалуйста, обратите внимание, что методы push, pop, shift, unshift, sort, reverse и splice изменяют исходный массив.
+
+// !Эти методы – самые используемые, их достаточно в 99 % случаев.Но существуют и другие:
+
+// arr.some(fn) / arr.every(fn) проверяет массив.
+
+// Функция fn вызывается для каждого элемента массива аналогично map.Если какие - либо / все результаты вызовов являются true, то метод возвращает true, иначе false.
+
+// Эти методы ведут себя примерно так же, как операторы || и &&: если fn возвращает истинное значение, arr.some() немедленно возвращает true и останавливает перебор остальных элементов; если fn возвращает ложное значение, arr.every() немедленно возвращает false и также прекращает перебор остальных элементов.
+
+// Мы можем использовать every для сравнения массивов:
+
+// function arraysEqual(arr1, arr2) {
+//   return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
+// }
+
+// alert(arraysEqual([1, 2], [1, 2])); // true
+// arr.fill(value, start, end) – заполняет массив повторяющимися value, начиная с индекса start до end.
+
+// arr.copyWithin(target, start, end) – копирует свои элементы, начиная с позиции start и заканчивая end, в себя, на позицию target(перезаписывая существующие).
+
+// arr.flat(depth) / arr.flatMap(fn) создаёт новый плоский массив из многомерного массива.
+
+// Полный список есть в справочнике MDN.
+
+// На первый взгляд может показаться, что существует очень много разных методов, которые довольно сложно запомнить.Но это гораздо проще, чем кажется.
+
+// Внимательно изучите шпаргалку, представленную выше, а затем, чтобы попрактиковаться, решите задачи, предложенные в данной главе.Так вы получите необходимый опыт в правильном использовании методов массива.
+
+// Всякий раз, когда вам будет необходимо что - то сделать с массивом, а вы не знаете, как это сделать – приходите сюда, смотрите на таблицу и ищите правильный метод.Примеры помогут вам всё сделать правильно, и вскоре вы быстро запомните методы без особых усилий.
+
+
+// Напишите функцию shuffle(array), которая перемешивает(переупорядочивает случайным образом) элементы массива.
+// Многократные прогоны через shuffle могут привести к разным последовательностям элементов.Например:
+arr = [1, 2, 3]
+function shuffle(arr: any[]) {
+  const newArr = [] as any[]
+  const indexArray = [] as number[]
+  let i = 0
+  do {
+    const randInt = randomInteger(0, arr.length - 1)
+    i++
+    if (!indexArray.includes(randInt)) {
+      indexArray.push(randInt)
+      newArr.push(arr[randInt])
+    }
+  } while (indexArray.length != arr.length)
+  console.log(i)
+  return newArr
+}
+
+shuffle(arr)
+
+// let count = {
+//   '123': 0,
+//   '132': 0,
+//   '213': 0,
+//   '231': 0,
+//   '321': 0,
+//   '312': 0
+// } as any
+
+// for (let i = 0; i < 1000000; i++) {
+//   let array = [1, 2, 3]
+//   const newArr = shuffle(array)
+//   count[newArr.join('')]++
+// }
+
+// // показать количество всех возможных вариантов
+// for (let key in count) {
+//   console.log(`${key}: ${count[key]}`);
+// }
+
+
+//  Агрегирование данных: У вас есть массив объектов с числовыми значениями (например, продажами товаров за месяц). 
+let arrayOfGoods = [
+  {
+    name: 'vans knew school',
+    quantity: 1,
+    price: 15600
+  },
+  {
+    name: 'adidas campus',
+    quantity: 1,
+    price: 17400
+  },
+  {
+    name: 'nike air trainer',
+    quantity: 1,
+    price: 22300
+  },
+] as any
+// Найдите сумму, среднее и максимальное значение этих числовых данных.
+function averagePrice(arrayOfGoods: any) {
+  const agregate = {
+    sum: 0,
+    average: 0,
+    max: 0
+  }
+  agregate.sum = arrayOfGoods.reduce((sum: number, el: any) => sum += el.quantity * el.price, 0)
+  agregate.average = agregate.sum / arrayOfGoods.length
+  agregate.max = Math.max(...arrayOfGoods.map((el: any) => el.quantity * el.price))
+  return agregate
+}
+console.log(averagePrice(arrayOfGoods))
+
+console.log('Object.keys(arrayOfGoods[0])')
+for (let el of Object.keys(arrayOfGoods[0])) {
+  console.log(el, arrayOfGoods[0][el])
+}
+console.log('Object.values(arrayOfGoods[0])')
+for (let el of Object.values(arrayOfGoods[0])) {
+  console.log(el)
+}
+console.log('Object.entries(arrayOfGoods[0])', Object.entries(arrayOfGoods[0]))
+for (let el of Object.entries(arrayOfGoods[0])) {
+  console.log(el, el[0], el[1])
+}
+
+// Трансформации объекта
+// У объектов нет множества методов, которые есть в массивах, например map, filter и других.
+
+// Если мы хотели бы их применить, то можно использовать Object.entries с последующим вызовом Object.fromEntries:
+
+// Вызов Object.entries(obj) возвращает массив пар ключ / значение для obj.
+// На нём вызываем методы массива, например, map.
+// Используем Object.fromEntries(array) на результате, чтобы преобразовать его обратно в объект.
+// Например, у нас есть объект с ценами, и мы хотели бы их удвоить:
+
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+let doublePrices = Object.fromEntries(
+  // преобразовать в массив, затем map, затем fromEntries обратно объект
+  Object.entries(prices).map(([key, value]) => [key, value * 2])
+);
+
+console.log(doublePrices.meat); // 8
+
+// Деструктуризация массива
+// Вот пример деструктуризации массива на переменные:
+
+// у нас есть массив с именем и фамилией
+arr = ["Ilya", "Kantor", "Kantor", "Kantor5", "Kantor"] as any
+
+// деструктурирующее присваивание
+// записывает firstName = arr[0]
+// и surname = arr[1]
+let [, , , surname1] = arr
+
+console.log(surname1) // Kantor5
+
+// Теперь мы можем использовать переменные вместо элементов массива.
+// Отлично смотрится в сочетании со split или другими методами, возвращающими массив:
+
+// !Если мы хотим не просто получить первые значения, но и собрать все остальные, то мы можем добавить ещё один параметр, который получает остальные значения, используя оператор «остаточные параметры» – троеточие("..."):
+let [firstName2, surname2, ...rest] = "Ilya Kantor gdfgdeg sdfsd f".split(' ')
+console.log(firstName2) // Ilya
+console.log(surname2)  // Kantor
+console.log(rest)  //остальные
+
+// !Переменная rest является массивом из оставшихся элементов.
+
+// !Вместо rest можно использовать любое другое название переменной, просто убедитесь, что перед переменной есть три точки и она стоит на последнем месте в деструктурирующем присваивании.
+
+// Присваивайте чему угодно с левой стороны
+// Мы можем использовать что угодно «присваивающее» с левой стороны.
+
+// Например, можно присвоить свойству объекта:
+
+user = {} as any
+[user.name, user.surname] = "Ilya Kantor".split(' ');
+
+console.log(user.name); // Ilya
+console.log(user.surname); // Kantor
+
+// !цикл по ключам и значениям с деструктуризацией
+for (let [key, value] of Object.entries(user)) {
+  console.log(`${key}:${value}`)
+}
+
+// Трюк обмена переменных
+// Существует хорошо известный трюк для обмена значений двух переменных с использованием деструктурирующего присваивания:
+
+let guest = "Jane"
+let admin = "Pete"
+
+  // Давайте поменяем местами значения: сделаем guest = "Pete", а admin = "Jane"
+  ;[guest, admin] = [admin, guest]
+
+console.log(`${guest} ${admin}`) // Pete Jane (успешно заменено!)
+// Здесь мы создаём временный массив из двух переменных и немедленно деструктурируем его в порядке замены.
+// Таким образом, мы можем поменять местами даже более двух переменных.
+
+// !Если мы хотим, чтобы значение «по умолчанию» заменило отсутствующее, мы можем указать его с помощью =:
+
+// значения по умолчанию
+let [name1 = "Guest", surname = "Anonymous"] = ["Julius"];
+
+console.log(name1);    // Julius (из массива)
+console.log(surname); // Anonymous (значение по умолчанию)
+// !Значения по умолчанию могут быть гораздо более сложными выражениями или даже функциями.Они выполняются, только если значения отсутствую
+
+
+
+
+
+// !Итого
+// ?Деструктуризация позволяет разбивать объект или массив на переменные при присвоении.
+
+// ?Полный синтаксис для объекта:
+
+// let { prop: varName = default, ...rest } = object
+
+// Cвойство prop объекта object здесь должно быть присвоено переменной varName.Если в объекте отсутствует такое свойство, переменной varName присваивается значение по умолчанию.
+
+// Свойства, которые не были упомянуты, копируются в объект rest.
+
+// ?Полный синтаксис для массива:
+
+// let [item1 = default , item2, ...rest] = array
+// Первый элемент отправляется в item1; второй отправляется в item2, все остальные элементы попадают в массив rest.
+
+// Можно извлекать данные из вложенных объектов и массивов, для этого левая сторона должна иметь ту же структуру, что и правая.
+
+
+// !Написать функцию, которая проверяет, является ли пере-
+// данная строка палиндромом.
+
+function polindom(str: string) {
+  const i = Math.floor(str.length / 2)
+  if (str.length % 2) {
+    return str.slice(0, i) == str.slice(i + 1).split('').reverse().join('')
+  }
+  return str.slice(0, i) == str.slice(i).split('').reverse().join('')
+}
+
+console.log(polindom('1234321'))
+console.log(polindom('1234320'))
+console.log(polindom('123321'))
+console.log(polindom('123320'))
+
+function sum1(a: number, b: number, ...rest: number[]) {
+  return a + b + rest.reduce((sum, el) => sum + el)
+}
+function sum2(...остальные: number[]) {
+  return остальные.reduce((sum, el) => sum + el)
+}
+
+console.log(sum1(1, 2, 3, 4, 5))
+console.log(sum2(...[1, 2, 3, 4, 5]))
+
+const arrCopy = [...arr]
+console.log(arrCopy)
+const objCopy = { ...arr }
+console.log(objCopy)
+
+  ; (function mergeArr() {
+    let arr = [3, 5, 1]
+    let arr2 = [8, 9, 15]
+    let merged = [0, ...arr, 2, ...arr2].sort((a, b) => a - b)
+    console.log(merged)
+  })()
+
+// !Array.from преобразует перебираемый объект в массив
+// ?между Array.from(obj) и[...obj] есть разница:
+
+// Array.from работает как с псевдомассивами, так и с итерируемыми объектами
+// Оператор расширения работает только с итерируемыми объектами
+// Выходит, что если нужно сделать из чего угодно массив, то Array.from — более универсальный метод.
+
+// Итого
+// Когда мы видим "..." в коде, это могут быть как остаточные параметры (REST), так и оператор расширения (SPREAD)
+
+// Как отличить их друг от друга:
+
+// Если ... располагается в конце списка параметров функции, то это «остаточные параметры». Он собирает остальные неуказанные аргументы и делает из них массив.
+// Если ... встретился в вызове функции или где - либо ещё, то это «оператор расширения». Он извлекает элементы из массива.
+// Полезно запомнить:
+
+// Остаточные параметры используются, чтобы создавать новые функции с неопределённым числом аргументов.
+// С помощью оператора расширения можно вставить массив в функцию, которая по умолчанию работает с обычным списком аргументов.
+// Вместе эти конструкции помогают легко преобразовывать наборы значений в массивы и обратно
+
+// @ts-ignore
+console.log(varVar)
+var varVar = 10
+console.log(varVar)
+var varVar = 20
+console.log(varVar)
+
+
+// С помощью блоков {... } мы можем изолировать часть кода, выполняющую свою собственную задачу, с переменными, принадлежащими только ей:
+
+{
+  // показать сообщение
+  let message = "Hello"
+  console.log(message)
+}
+
+{
+  // показать другое сообщение
+  let message = "Goodbye"
+  console.log(message)
+}
+
+console.log(message)
+
+// Для if, for, while и т.д.переменные, объявленные в блоке кода {... }, также видны только внутри:
+
+if (true) {
+  let phrase = "Hello";
+  console.log(phrase); // Hello
+}
+
+// alert(phrase); // Ошибка, нет такой переменной!
+
+// !И это замечательно, поскольку это позволяет нам создавать блочно-локальные переменные, относящиеся только данному блоку кода
+
+// !!!Вложенные функции
+
+function makeCounter(count: number) {
+  const countersDiv = document.getElementById('counters')
+  const button = document.createElement('button')
+  button.textContent = count.toFixed()
+  button.onclick = function () {
+    button.textContent = (++count).toFixed()
+  }
+  countersDiv?.append(button)
+}
+
+makeCounter(0)
+makeCounter(5)
+makeCounter(10)
+
+
+// !Замыкания
+// В программировании есть общий термин: «замыкание», – который должен знать каждый разработчик.
+
+// Замыкание – это функция, которая запоминает свои внешние переменные и может получить к ним доступ.В некоторых языках это невозможно, или функция должна быть написана специальным образом, чтобы получилось замыкание.Но, как было описано выше, в JavaScript, все функции изначально являются замыканиями(есть только одно исключение, про которое будет рассказано в Синтаксис "new Function").
+
+// То есть они автоматически запоминают, где были созданы, с помощью скрытого свойства[[Environment]], и все они могут получить доступ к внешним переменным.
+
+// !Когда на собеседовании фронтенд - разработчику задают вопрос: «что такое замыкание ?», – правильным ответом будет определение замыкания и объяснения того факта, что все функции в JavaScript являются замыканиями, и, может быть, несколько слов о технических деталях: свойстве[[Environment]] и о том, как работает лексическое окружение.
+
+// Сумма с помощью замыканий
+// важность: 4
+// Напишите функцию sum, которая работает таким образом: sum(a)(b) = a + b.
+
+// Да, именно таким образом, используя двойные круглые скобки(не опечатка).
+
+// Например:
+
+function closureSum(a: number) {
+  return function (b: number) {
+    return a + b
+  }
+}
+
+console.log(closureSum(1)(2))
+console.log(closureSum(5)(-1))
+
+// Каррирование
+const operand4 = closureSum(4)
+console.log(operand4(-2))
+console.log(operand4(2))
+console.log(operand4(12))
+
+// Функция - конструктор
+// Функции - конструкторы технически являются обычными функциями.Но есть два соглашения:
+
+// Имя функции - конструктора должно начинаться с большой буквы.
+// Функция - конструктор должна выполняться только с помощью оператора "new".
+
+// this это {} (пустой объект)
+const User = (function (this: Record<string, any>, name: string) {
+  // во время создания нового объекта при помощи оператора new, в this присваивается пустой объект
+  // this = {};  (неявно)
+
+  // выполняется тело функции.Обычно оно модифицирует this, добавляя туда новые свойства
+  // добавляет свойства к this
+  this.name = name
+  this.isAdmin = false
+  this.isLogin = function () {
+    return false
+  }
+  // неявно возвращается this
+  // return this (неявно)
+}) as any
+
+// Функция-конструктор, создающая объект с переданным именеи и ложью в свойстве isAdmin
+const SimpleUser = (function (this: Record<string, any>, name: string) {
+  this.name = name
+  this.isAdmin = false
+  this.isLogin = function () {
+    return false
+  }
+}) as any
+
+const simpleUser = function (name: string) {
+  return {
+    name,
+    isAdmin: false,
+    isLogin() {
+      return false
+    }
+  }
+}
+
+console.log(new SimpleUser('Student'))
+console.log((new SimpleUser('Student')).isLogin == (new SimpleUser('Student1')).isLogin)
+console.log(simpleUser('Student'))
+console.log(simpleUser('Student').isLogin == simpleUser('Student1').isLogin)
+
+class NewUser {
+  name
+  isAdmin
+  constructor(name: string) {
+    // во время создания нового объекта при помощи оператора new, в this присваивается пустой объект
+    // this = {};  (неявно)
+    this.name = name
+    this.isAdmin = false
+  }
+  isLogin() {
+    return false
+  }
+}
+
+// Таким образом, let user = new User("Jack") возвращает тот же результат, что и:
+
+// let user = {
+//   name: "Jack",
+//   isAdmin: false
+// }
+
+console.log({ name: 'noJack1', admin: true, isLogin() { return false } })
+console.log((new User('Jack')))
+console.log((new User('Jack')).constructor.name)
+console.log(new NewUser('Pirat'))
+console.log(new NewUser('Pirat').constructor.name)
+console.log((new NewUser('Pirat')).isAdmin == (new NewUser('Pirat2')).isAdmin)
+console.log(new NewUser('Pirat2'))
+console.log(Object.keys(simpleUser('Jack0')))
+console.log(Object.keys(new User('Jack')))
+console.log(Object.keys(new NewUser('Pirat')))
+
+
+// Используя специальное свойство new.target внутри функции, мы можем проверить, вызвана ли функция при помощи оператора new или без него.
+
+// В случае обычного вызова функции new.target будет undefined.Если же она была вызвана при помощи new, new.target будет равен самой функции.
+const User1 = (function (this: any, name: string) {
+  console.log(new.target)
+  if (!new.target) { // в случае, если вы вызвали меня без оператора new
+    return new User1(name) // ...я добавлю new за вас
+  }
+  this.name = name
+}) as any
+
+let john = User1("John") // переадресовывает вызов на new User
+let john1 = new User1("John") // переадресовывает вызов на new User
+console.log(john.name) // John
+
+// !Возврат значения из конструктора, return
+// Обычно конструкторы не имеют оператора return.Их задача – записать все необходимое в this, и это автоматически становится результатом.
+
+// Но если return всё же есть, то применяется простое правило:
+
+// При вызове return с объектом, вместо this вернётся объект.
+// При вызове return с примитивным значением, оно проигнорируется.
+// Другими словами, return с объектом возвращает этот объект, во всех остальных случаях возвращается this.
+
+// Функции-конструкторы или просто конструкторы, являются обычными функциями, но существует общепринятое соглашение именовать их с заглавной буквы.
+// Функции-конструкторы следует вызывать только с помощью new. Такой вызов подразумевает создание пустого this в начале и возврат заполненного в конце.
+// Мы можем использовать конструкторы для создания множества похожих объектов.
+
+console.log(new Date())
+
+// Геттеры (получатели) и сеттеры (устанавливатели) - методы объекта, ведущие себя как свойства
+
+const car = {
+  name: 'tio',
+  _fuel: 10,
+  getFuel() {
+    return this._fuel
+  },
+  // геттер всегда что-то возвращает
+  get fuel() {
+    return this._fuel
+  },
+  setFuel(val: number) {
+    this._fuel += val
+  },
+  // сеттер всегда что-то устанавливает
+  set refuel(val: number) {
+    this._fuel += val
+  },
+  get refuel() {
+    return this._fuel
+  }
+}
+
+console.log(car.getFuel())
+car.setFuel(10)
+console.log(car.fuel) // сработал геттер
+car.refuel = 20 // сработал сеттер
+console.log(car.fuel)
+
+const student = {
+  name: 'Asd',
+  surname: 'Daf',
+  get fullname() {
+    return `${this.name} ${this.surname}`
+  },
+  set fullname(fio: string) {
+    ;[this.name, this.surname] = fio.split(' ')
+  },
+  toString() {
+    return `I'm student ${this.fullname}`
+  }
+}
+
+console.log(student)
+console.log(student.fullname)
+student.fullname = 'fsda sgflkj ывфвв'
+console.log(student.fullname)
+console.log(student)
+console.log(student.toString())
+
+// В объектно-ориентированном программировании класс – это расширяемый шаблон кода для создания объектов, который устанавливает в них начальные значения (свойства) и реализацию поведения (методы).
+
+// В JavaScript класс – это разновидность функции.
+
+//  Взгляните:
+
+// class User {
+//   constructor(name) { this.name = name; }
+//   sayHi() { alert(this.name); }
+// }
+
+// доказательство: User - это функция
+// alert(typeof User); // function
+// Вот что на самом деле делает конструкция class User {... }:
+
+// Создаёт функцию с именем User, которая становится результатом объявления класса.Код функции берётся из метода constructor(она будет пустой, если такого метода нет).
+// Сохраняет все методы, такие как sayHi, в User.prototype.
+// При вызове метода объекта new User он будет взят из прототипа, как описано в главе F.prototype.Таким образом, объекты new User имеют доступ к методам класса.
+
+// класс - это функция
+console.log(typeof NewUser); // function
+
+// ...или, если точнее, это метод constructor
+console.log(NewUser === NewUser.prototype.constructor); // true
+
+// Методы находятся в User.prototype, например:
+console.log(NewUser.prototype.isLogin); // sayHi() { alert(this.name); }
+
+// в прототипе ровно 2 метода
+console.log(Object.getOwnPropertyNames(NewUser.prototype)); // constructor, sayHi
+
+// Базовый синтаксис для классов выглядит так:
+
+// class MyClass {
+//   prop = value; // свойство
+//   constructor(...) { // конструктор
+//     // ...
+//   }
+//   method(...) { } // метод
+//   get something(...) { } // геттер
+//   set something(...) { } // сеттер
+//   [Symbol.iterator]() { } // метод с вычисляемым именем (здесь - символом)
+//   // ...
+// }
+// MyClass технически является функцией(той, которую мы определяем как constructor), в то время как методы, геттеры и сеттеры записываются в MyClass.prototype.
+
+// Реализовать класс, описывающий html элемент.
+// Класс HtmlElement должен содержать внутри себя:
+// ■ название тега;
+// ■ самозакрывающийся тег или нет;
+// ■ текстовое содержимое;
+// ■ массив атрибутов;
+// ■ массив стилей;
+// ■ массив вложенных таких же тегов;
+// метод для установки атрибута;
+// ■ метод для установки стиля;
+// ■ метод для добавления вложенного элемента в конец текущего элемента;
+// ■ метод для добавления вложенного элемента в начало текущего элемента;
+// ■ метод getHtml(), который возвращает html код в виде
+// строки, включая html код вложенных элементов.
+// С помощью написанного класса реализовать следующий блок
+// и добавить его на страницу с помощью document.write().
+
+class HtmlElement {
+  tag: string
+  paired: boolean
+  text: string
+  attrs: string[] = []
+  styles: string[] = []
+  htmlElements: HtmlElement[] = []
+  constructor(tag: string, paired: boolean, text: string) {
+    this.tag = tag
+    this.paired = paired
+    this.text = text
+  }
+  setAttr(name: string, value: string) {
+    this.attrs.push(`${name}="${value}"`)
+  }
+  setStyle(name: string, value: string) {
+    this.styles.push(`${name}:${value}`)
+  }
+  append(element: HtmlElement) {
+    this.htmlElements.push(element)
+  }
+  prepend(element: HtmlElement) {
+    this.htmlElements.unshift(element)
+  }
+  getHtml(): string {
+    if (this.styles.length) {
+      this.setAttr('style', this.styles.join(';'))
+    }
+    if (this.paired) {
+      return `<${this.tag} ${this.attrs.join(' ')}>${this.text}
+${this.htmlElements.map(el => el.getHtml()).join('')} 
+</${this.tag}>`
+    } else {
+      return `<${this.tag} ${this.attrs.join(' ')}>`
+    }
+  }
+}
+
+const wrapper = new HtmlElement('div', true, '')
+wrapper.setAttr('id', 'wrapper')
+wrapper.setStyle('display', 'flex')
+const innerDiv = new HtmlElement('div', true, '')
+innerDiv.setStyle('width', '300px')
+innerDiv.setStyle('margin', '10px')
+const h3 = new HtmlElement('h3', true, 'What is Lorem Ipsum?')
+const img = new HtmlElement('img', false, '')
+img.setAttr('src', 'https://img.goodfon.com/original/1280x1024/7/9a/cvety-cvetok-buket-priroda.jpg')
+img.setAttr('alt', 'Lorem Ipsum')
+img.setStyle('width', '100%')
+const p = new HtmlElement('p', true, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias harum fuga magni quasi ex pariatur reprehenderit laudantium esse. Veritatis maiores qui fugiat nostrum, quo nihil sit recusandae aspernatur incidunt dolore.')
+p.setStyle('text-align', 'justify')
+const href = new HtmlElement('a', true, 'More...')
+href.setAttr('href', 'https://www.lipsum.com/')
+href.setAttr('target', '_blank')
+
+p.append(href)
+innerDiv.append(h3)
+innerDiv.append(img)
+innerDiv.append(p)
+wrapper.append(innerDiv)
+wrapper.append(innerDiv)
+const iframe = document.querySelector('iframe')
+
+// <script src="https://rawgit.com/Microsoft/TypeScript/master/lib/typescriptServices.js"></script>
+// <script src="https://rawgit.com/basarat/typescript-script/master/transpiler.js"></script>
+// <script type="text/typescript">
+// const target = e.target as HTMLElement
+const script = `
+<script>
+document.addEventListener('click', (e)=>{
+  if (e.target.tagName == 'A') {
+    alert('Попытка перехода на другой сайт')
+    e.target.target = '_self'
+  }
+  return
+})
+</script>
+`
+// https://habr.com/ru/articles/488516/
+if (iframe) iframe.srcdoc = '<!DOCTYPE><html><body>' + wrapper.getHtml() + script + '</body></html>'
+
+// Объект Date
+// !Дата и время в JavaScript представлены объектом Date.Нельзя создать «только дату» или «только время»: объекты Date всегда содержат и то, и другое.
+// !Счёт месяцев начинается с нуля(да, январь – это нулевой месяц).
+// !Дни недели в getDay() также отсчитываются с нуля, что соответствует воскресенью.
+// ?Объект Date самостоятельно корректируется при введении значений, выходящих за рамки допустимых.Это полезно для сложения / вычитания дней / месяцев / недель.
+// ?Даты можно вычитать, и разность возвращается в миллисекундах.Так происходит, потому что при преобразовании в число объект Date становится таймстампом.
+// !Используйте Date.now() для быстрого получения текущего времени в формате таймстампа.
+// !Учтите, что, в отличие от некоторых других систем, в JavaScript таймстамп в миллисекундах, а не в секундах.
+
+// Unix time, он же timestamp, он же метка времени
+console.log('Кол-во миллисекунд, прошедшее с 01.01.1970 00:00 (Unix time)', Date.now())
+console.log('Текуее время', new Date())
+console.log('Создание времени из метки', new Date(Date.now()))
+console.log('Создание времени из строки', new Date('2023-10-16'))
+console.log('Создание времени из строки', new Date('2023-10-16T19:47:00'))
+
+// Прототипное наследование
+
+
+let animal = {
+  eats: true,
+  walk() {
+    console.log("Animal walk");
+  }
+} as any
+
+let rabbit = {
+  jumps: true
+} as any
+rabbit.__proto__ = animal
+
+rabbit.walk = function () {
+  console.log("Rabbit! Bounce-bounce!")
+}
+
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit
+} as any
+
+// animal.__proto__ = longEar
+
+// walk взят из цепочки прототипов
+longEar.walk() // Animal walk
+console.log(longEar.jumps) // true (из rabbit)
+// Object.keys возвращает только собственные ключи
+console.log(Object.keys(longEar)) // earLength
+
+
+console.log(longEar.__proto__) //rabbit
+console.log(longEar.__proto__.__proto__) //animal
+console.log(longEar.__proto__.__proto__.__proto__) //Object
+console.log(longEar.__proto__.__proto__.__proto__.__proto__) //null (undefined)
+
+
+
+// for..in проходит и по своим, и по унаследованным ключам
+for (let prop in longEar) {
+  let isOwn = longEar.hasOwnProperty(prop);
+
+  if (isOwn) {
+    console.log(`Our: ${prop}`); // Our: jumps
+  } else {
+    console.log(`Inherited: ${prop}`); // Inherited: eats
+  }
+}
+
+console.log(rabbit)
+console.log('rabbit.eats', rabbit.eats)
+rabbit.walk()
+
+let user3 = {
+  name: "John",
+  surname: "Smith",
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  },
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+};
+
+let admin3 = {
+  __proto__: user3,
+  isAdmin: true
+} as any
+
+console.log(admin3)
+console.log(admin3.fullName); // John Smith (*)
+
+// Значение «this»
+// Прототипы никак не влияют на this.
+// Неважно, где находится метод: в объекте или его прототипе. При вызове метода this — всегда объект перед точкой.
+
+// срабатывает сеттер!
+admin3.fullName = "Alice Cooper"; // (**)
+console.log(admin3.name); // Alice
+console.log(admin3.surname); // Cooper
+console.log(admin3)
+
+// В JavaScript все объекты имеют скрытое свойство[[Prototype]], которое является либо другим объектом, либо null.
+// Мы можем использовать obj.__proto__ для доступа к нему(исторически обусловленный геттер / сеттер, есть другие способы, которые скоро будут рассмотрены).
+// Объект, на который ссылается[[Prototype]], называется «прототипом».
+// Если мы хотим прочитать свойство obj или вызвать метод, которого не существует у obj, тогда JavaScript попытается найти его в прототипе.
+// Операции записи / удаления работают непосредственно с объектом, они не используют прототип(если это обычное свойство, а не сеттер).
+// Если мы вызываем obj.method(), а метод при этом взят из прототипа, то this всё равно ссылается на obj.Таким образом, методы всегда работают с текущим объектом, даже если они наследуются.
+// Цикл for..in перебирает как свои, так и унаследованные свойства.Остальные методы получения ключей / значений работают только с собственными свойствами объекта.
+
+{
+  let animal = {
+    eats: true
+  }
+  let superAnimal = {
+    eats: false,
+  }
+
+  const Rabbit = (function (this: any, name: string) {
+    this.name = name
+  }) as any
+
+  console.log(Rabbit.prototype.constructor == Rabbit)
+  /* прототип по умолчанию
+  Rabbit.prototype = { constructor: Rabbit };
+  */
+
+  // Rabbit.prototype = animal
+  Rabbit.prototype = { ...animal, constructor: Rabbit }
+  let rabbit = new Rabbit("White Rabbit") //  rabbit.__proto__ == animal
+  console.log(rabbit)
+  console.log(new rabbit.constructor('Yellow Rabbit'))
+
+
+  Rabbit.prototype = superAnimal
+  let rabbit2 = new Rabbit("Black Rabbit") //  rabbit.__proto__ == superAnimal
+  console.log(rabbit2)
+
+  // В этой главе мы кратко описали способ задания [[Prototype]] для объектов, создаваемых с помощью функции-конструктора. Позже мы рассмотрим, как можно использовать эту возможность.
+
+  // Всё достаточно просто. Выделим основные моменты:
+
+  // Свойство F.prototype (не путать с [[Prototype]]) устанавливает[[Prototype]] для новых объектов при вызове new F().
+  // Значение F.prototype должно быть либо объектом, либо null. Другие значения не будут работать.
+  // Свойство "prototype" является особым, только когда оно назначено функции-конструктору, которая вызывается оператором new.
+  // В обычных объектах prototype не является чем-то особенным:
+
+  // let user = {
+  //   name: "John",
+  //   prototype: "Bla-bla" // никакой магии нет - обычное свойство
+  // };
+  // По умолчанию все функции имеют F.prototype = { constructor: F }, поэтому мы можем получить конструктор объекта через свойство "constructor".
+
+}
+
+
+{
+  // Встроенные прототипы
+  // console.log(Object.prototype.__proto__) // null
+
+  let arr = [1, 2, 3] as any
+
+  // наследует ли от Array.prototype?
+  console.log(arr.__proto__ === Array.prototype); // true
+
+  // затем наследует ли от Object.prototype?
+  console.log(arr.__proto__.__proto__ === Object.prototype); // true
+
+  // и null на вершине иерархии
+  console.log(arr.__proto__.__proto__.__proto__); // null
+  console.dir(arr)
+
+  // String.prototype.show = function () {
+  //   console.log(this, this, this)
+  // }
+
+  // "BOOM!".show(); // BOOM! BOOM! BOOM!
+
+  let obj = {
+    0: "Hello",
+    1: "world!",
+    length: 2,
+  } as any
+
+  obj.__proto__ = Array.prototype
+  obj.push(`I'm like Array`)
+  console.log(obj)
+  console.log(obj.join(',')) // Hello,world!
+}
+
+{
+  let animal = {
+    eats: true
+  };
+
+  // создаём новый объект с прототипом animal
+  let rabbit = Object.create(animal)
+
+  let rabbit2 = {
+    name: 'bunny',
+    jumps: true
+  } as any
+  Object.setPrototypeOf(rabbit2, animal)
+
+  console.log(rabbit.eats) // true
+  console.log(rabbit2.eats) // true
+
+  console.log(Object.getPrototypeOf(rabbit) === animal) // получаем прототип объекта rabbit
+
+  Object.setPrototypeOf(rabbit, {}) // заменяем прототип объекта rabbit на {}
+
+  let rabbit3 = Object.create(animal, {
+    jumps: {
+      writable: true, // определяет, можно ли изменять значение свойства
+      enumerable: true, // определяет, будет ли свойство выводиться в циклах и Object.keys, values, entries
+      configurable: true, // определяет, можно ли менять все эти свойства 
+      value: true
+    }
+  });
+
+  console.log(rabbit3.jumps) // true
+  // rabbit3.jumps = false
+  // console.log(rabbit3.jumps)
+
+  for (let prop in rabbit3) {
+    console.log(prop)
+  }
+
+  // Современные способы установки и прямого доступа к прототипу это:
+
+  // Object.create(proto[, descriptors]) – создаёт пустой объект со свойством [[Prototype]], указанным как proto (может быть null), и необязательными дескрипторами свойств.
+  // Object.getPrototypeOf(obj) – возвращает свойство [[Prototype]] объекта obj (то же самое, что и геттер __proto__).
+  // Object.setPrototypeOf(obj, proto) – устанавливает свойство [[Prototype]] объекта obj как proto (то же самое, что и сеттер __proto__).
+  // Встроенный геттер/сеттер __proto__ не безопасен, если мы хотим использовать созданные пользователями ключи в объекте. Как минимум потому, что пользователь может ввести "__proto__" как ключ, от чего может возникнуть ошибка. Если повезёт – последствия будут лёгкими, но, вообще говоря, они непредсказуемы.
+
+  // Так что мы можем использовать либо Object.create(null) для создания «простейшего» объекта, либо использовать коллекцию Map.
+
+  // Кроме этого, Object.create даёт нам лёгкий способ создать поверхностную копию объекта со всеми дескрипторами:
+
+  // let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
+  // Мы также ясно увидели, что __proto__ – это геттер/сеттер для свойства [[Prototype]], и находится он в Object.prototype, как и другие методы.
+
+  // Мы можем создавать объекты без прототипов с помощью Object.create(null). Такие объекты можно использовать как «чистые словари», у них нет проблем с использованием строки "__proto__" в качестве ключа.
+
+  // Ещё методы:
+
+  // Object.keys(obj) / Object.values(obj) / Object.entries(obj) – возвращают массив всех перечисляемых собственных строковых ключей/значений/пар ключ-значение.
+  // Object.getOwnPropertySymbols(obj) – возвращает массив всех собственных символьных ключей.
+  // Object.getOwnPropertyNames(obj) – возвращает массив всех собственных строковых ключей.
+  // Reflect.ownKeys(obj) – возвращает массив всех собственных ключей.
+  // obj.hasOwnProperty(key): возвращает true, если у obj есть собственное (не унаследованное) свойство с именем key.
+  // Все методы, которые возвращают свойства объектов (такие как Object.keys и другие), возвращают «собственные» свойства. Если мы хотим получить и унаследованные, можно воспользоваться циклом for..in.
+}
+
+{
+  // !Наслкдование классов
+
+  class Animal {
+    name
+    speed
+    constructor(name: string) {
+      this.speed = 0
+      this.name = name
+    }
+    run(speed: number) {
+      this.speed = speed
+      console.log(`${this.name} бежит со скоростью ${this.speed}.`)
+    }
+    stop() {
+      this.speed = 0
+      console.log(`${this.name} стоит неподвижно.`)
+    }
+  }
+
+  let animal = new Animal("Мой питомец")
+
+  // У классов есть ключевое слово "super" для таких случаев.
+
+  // super.method(...) вызывает родительский метод.
+  // super(...) для вызова родительского конструктора(работает только внутри нашего конструктора).
+  // У стрелочных функций нет super и this
+  class Rabbit extends Animal {
+    // неявно генерируется для классов-потомков, у которых нет своего конструктора
+    // constructor(...args) {
+    //   super(...args);
+    // }
+    earLength
+    constructor(name:string, earLength:number) {
+      super(name)
+      this.earLength = earLength
+    }
+
+    hide() {
+      console.log(`${this.name} прячется!`)
+    }
+    stop() {
+      super.stop() // вызываем родительский метод stop
+      this.hide() // и затем hide
+    }
+    stopAfterDelay(seconds:number) {
+      setTimeout(() => this.stop(), seconds*1000); // вызывает родительский stop после 1 секунды
+    }
+  }
+
+  let rabbit = new Rabbit("Белый кролик",10)
+
+  console.log(rabbit)
+  console.log(rabbit.name)
+  console.log(rabbit.speed)
+  rabbit.run(5) // Белый кролик бежит со скоростью 5.
+  rabbit.stopAfterDelay(3) // Белый кролик прячется!
+  console.log(rabbit.speed)
+
+//   Методы, а не свойства-функции
+// Свойство [[HomeObject]] определено для методов как классов, так и обычных объектов. Но для объектов методы должны быть объявлены именно как method(), а не "method: function()".
+
+}
+
+const timerDiv = document.querySelector('#timer p') as HTMLParagraphElement
+
+class Clock {
+  template
+  timer = 0
+  constructor({ template }: any) {
+    this.template = template
+  }
+  render() {
+    const date = new Date()
+    const hours = date.getHours()
+    const h = hours < 10 ? '0' + hours : hours
+
+    const mins = date.getMinutes()
+    const m = mins < 10 ? '0' + mins : mins
+
+    const secs = date.getSeconds()
+    const s = secs < 10 ? '0' + secs : secs
+
+    let output = this.template
+      .replace('h', h)
+      .replace('m', m)
+      .replace('s', s)
+
+    timerDiv.textContent = output
+  }
+
+  stop() {
+    clearInterval(this.timer)
+  }
+
+  start() {
+    this.render()
+    this.timer = setInterval(() => this.render(), 1000)
+  }
+
+}
+
+class ExtendedClock extends Clock {
+  precision
+  constructor(template: any, precision=1000) {
+    super(template)
+    this.precision = precision
+  }
+  start() {
+    this.render()
+    this.timer = setInterval(() => this.render(), this.precision)
+  }
+}
+
+// Создайте новый класс ExtendedClock, который будет наследоваться от Clock и добавьте параметр precision – количество миллисекунд между «тиками». Установите значение в 1000(1 секунда) по умолчанию
+
+let clock = new ExtendedClock({ template: 'h:m:s' })
+const timerButtons = document.querySelectorAll('#timer button') as NodeListOf<HTMLButtonElement>
+timerButtons[0].addEventListener('click', () => clock.start())
+timerButtons[1].addEventListener('click', () => clock.stop())
+
+{
+  class User {
+    static race = 'human'
+    static population = 0
+    constructor() {
+      User.population ++
+    }
+    static staticMethod() {
+      console.log(this === User)
+    }
+  }
+
+  User.staticMethod = function () {
+    console.log(this === User)
+  }
+  
+  const humans = [
+    new User,
+    (new User),
+    (new User),
+    (new User),
+    (new User),
+    (new User),
+    (new User),
+    (new User)
+  ]
+  console.log('population', User.population)
+
+  class Article {
+    static publisher = "Илья Кантор"
+  }
+
+  console.log( Article.publisher ) // Илья Кантор
+  // Это то же самое, что и прямое присваивание Article:
+  Article.publisher = "Илья Кантор"
+
+}
+
+class Bank {
+  id
+  cash
+  static uid = 10
+  static cash = 100000
+  static clints = {} as Record<string, Bank>
+  constructor(cash:number) {
+    this.id = Bank.uid++
+    if (cash>0) {
+      this.cash = cash
+    } else {
+      this.cash = -cash
+    }
+    Bank.cash += cash
+    Bank.clints[this.id] = this
+  }
+}
+
+new Bank(1000)
+console.log(Bank.cash)
+new Bank(-10000)
+console.log(Bank.cash)
+new Bank(-40000)
+console.log(Bank.cash)
+new Bank(400000)
+
+console.log(Bank.clints)
+console.log(Bank.cash)
+
+// You are given an integer array arr. Sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more integers have the same number of 1's you have to sort them in ascending order.
+// Return the array after sorting it.
+
+{
+  const arr = [1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+  arr.sort((a, b) => {
+    let A = a.toString(2).match(/1/g)?.length || 0
+    let B = b.toString(2).match(/1/g)?.length || 0
+    return A == B ? a - b : A - B
+  })
+  console.log(arr)
+  console.log([1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024])
+  console.log([1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024].map(el=>el.toString(2)))
+  const arr2 = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  arr2.sort((a, b) => {
+    let A = a.toString(2).match(/1/g)?.length || 0
+    let B = b.toString(2).match(/1/g)?.length || 0
+    return A == B ? a - b : A - B
+  })
+  console.log(arr2.map(el=>el.toString(2)))
+  console.log(['0', '1', '10', '100', '1000', '11', '101', '110', '111'])
+  console.log([0, 1, 2, 4, 8, 3, 5, 6, 7])
+  // [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  // ['0', '1', '10', '11', '100', '101', '110', '111', '1000']
+  // [0, 1, 2, 4, 8, 3, 5, 6, 7]
+  // ['0', '1', '10', '100', '1000', '11', '101', '110', '111']
+}
+
+
+// Example 1:
+// Input: arr = [0,1,2,3,4,5,6,7,8]
+// Output: [0,1,2,4,8,3,5,6,7]
+// Explantion: [0] is the only integer with 0 bits.
+// [1,2,4,8] all have 1 bit.
+// [3,5,6] have 2 bits.
+// [7] has 3 bits.
+// The sorted array by bits is [0,1,2,4,8,3,5,6,7]
+// Example 2:
+// Input: arr = [1024,512,256,128,64,32,16,8,4,2,1]
+// Output: [1,2,4,8,16,32,64,128,256,512,1024]
+// Explantion: All integers have 1 bit in the binary representation, you should just sort them in ascending order.
+
+// Реализуйте класс ExtendedDate, унаследовав его от стандарт -
+//   ного класса Date и добавив следующие возможности:
+// ■ метод для вывода даты(числа и месяца) текстом;
+// ■ метод для проверки – это прошедшая дата или будущая
+//   (если прошедшая, то метод возвращает false; если буду -
+//   щая или текущая, то true);
+// ■ метод для проверки – високосный год или нет;
+// ■ метод, возвращающий следующую дату.
+// Создайте объект класса ExtendedDate и выведите на экран
+// результаты работы новых методов.
+
+function numberToText(n: number) {
+  if (n < -99 || n > 99) return 'Неверное число'
+  let minusStr = ''
+  let sN = ''
+  const numberWithMinus = n.toString()
+  if (numberWithMinus[0] == '-') {
+    minusStr = 'минус '
+    sN = numberWithMinus.slice(1)
+  } else {
+    sN = n.toString()
+  }
+  const oneNumber = [, 'первое', 'второе', 'третье', 'четвёртое', 'пятое', 'шестое', 'седьмое', 'восьмое', 'девятое']
+  const secondOfTen = ['десятое', 'одиннадцатое', 'двенадцатое', 'тринадцатое', 'четырнадцатое', 'пятьнадцатое', 'шестьнадцатое', 'семьнадцатое', 'восемьнадцатое', 'девятьнадцатое']
+  const firstOfMoreTen = [, , 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+  const firstOfMoreTenRound = [, , 'двадцатое', 'тридцатое', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+  if (sN.length == 1) {
+    return minusStr + oneNumber[+sN[0]]
+  }
+  if (sN.length == 2) {
+    if (sN[0] == '1') {
+      return minusStr + secondOfTen[+sN[1]]
+    }
+    if (sN[1] == '0') {
+      return minusStr + firstOfMoreTenRound[+sN[0]]
+    }
+    return minusStr + firstOfMoreTen[+sN[0]] + ' ' + oneNumber[+sN[1]]
+  }
+}
+
+class ExtendedDate extends Date {
+  getRussianDate() {
+    const month = ['января', 'февряля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+    return numberToText(this.getDate()) + ' ' + month[this.getMonth()]
+  }
+  isFuture() {
+    return this.getTime() > Date.now()
+  }
+  isLeap() {
+    const year = this.getFullYear()
+    return year%4==0 && (year%100!=0 || year%400==0)
+  }
+  nextDate() {
+    return new ExtendedDate(this.setDate(this.getDate()+1))
+  }
+}
+
+console.log(new Date('10-02-2023'))
+console.log(new ExtendedDate('10-02-2023'))
+console.log(ExtendedDate.now())
+console.log(new ExtendedDate(Date.now()-24*3600*1000).getRussianDate())
+console.log(new ExtendedDate(Date.now()-24*3600*1000).isFuture())
+console.log(new ExtendedDate().isFuture())
+console.log(new ExtendedDate(Date.now() + 24 * 3600 * 1000).isFuture())
+console.log(new ExtendedDate().isLeap())
+console.log(new ExtendedDate('10-02-2024').isLeap())
+console.log(new ExtendedDate('10-02-2300').isLeap())
+console.log(new ExtendedDate('10-02-2400').isLeap())
+console.log(new ExtendedDate().nextDate().nextDate().nextDate())
+
+console.log(closureSum(3)(5))
+console.log(a)
+console.log((null+'a').split('ll').join('tell'))
