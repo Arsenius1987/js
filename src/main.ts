@@ -1,4 +1,4 @@
-import './style.css'
+// import './style.css'
 // Комментарий
 // alert('Я JS')
 console.log('Я JS') // выводит в консоль "Я JS"
@@ -203,11 +203,11 @@ let phrase = `Обратные ${2 + 3}
 console.log('str2', str2)
 console.log('phrase', phrase)
 
-let name = 'Женя'
+let name2 = 'Женя'
 age = 23
 
 // Такое встраивание хначений в строку называется интерполяцией
-console.log(`Привет, меня зовут ${name}.
+console.log(`Привет, меня зовут ${name2}.
 Мне ${age} лет.
 Через месяц мне будет ${age + 1}`)
 
@@ -4011,6 +4011,190 @@ let clock = new ExtendedClock({ template: 'h:m:s' })
 const timerButtons = document.querySelectorAll('#timer button') as NodeListOf<HTMLButtonElement>
 timerButtons[0].addEventListener('click', () => clock.start())
 timerButtons[1].addEventListener('click', () => clock.stop())
+
+{
+  class User {
+    static race = 'human'
+    static population = 0
+    constructor() {
+      User.population ++
+    }
+    static staticMethod() {
+      console.log(this === User)
+    }
+  }
+
+  User.staticMethod = function () {
+    console.log(this === User)
+  }
+  
+  const humans = [
+    new User,
+    (new User),
+    (new User),
+    (new User),
+    (new User),
+    (new User),
+    (new User),
+    (new User)
+  ]
+  console.log('population', User.population)
+
+  class Article {
+    static publisher = "Илья Кантор"
+  }
+
+  console.log( Article.publisher ) // Илья Кантор
+  // Это то же самое, что и прямое присваивание Article:
+  Article.publisher = "Илья Кантор"
+
+}
+
+class Bank {
+  id
+  cash
+  static uid = 10
+  static cash = 100000
+  static clints = {} as Record<string, Bank>
+  constructor(cash:number) {
+    this.id = Bank.uid++
+    if (cash>0) {
+      this.cash = cash
+    } else {
+      this.cash = -cash
+    }
+    Bank.cash += cash
+    Bank.clints[this.id] = this
+  }
+}
+
+new Bank(1000)
+console.log(Bank.cash)
+new Bank(-10000)
+console.log(Bank.cash)
+new Bank(-40000)
+console.log(Bank.cash)
+new Bank(400000)
+
+console.log(Bank.clints)
+console.log(Bank.cash)
+
+// You are given an integer array arr. Sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more integers have the same number of 1's you have to sort them in ascending order.
+// Return the array after sorting it.
+
+{
+  const arr = [1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+  arr.sort((a, b) => {
+    let A = a.toString(2).match(/1/g)?.length || 0
+    let B = b.toString(2).match(/1/g)?.length || 0
+    return A == B ? a - b : A - B
+  })
+  console.log(arr)
+  console.log([1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024])
+  console.log([1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024].map(el=>el.toString(2)))
+  const arr2 = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  arr2.sort((a, b) => {
+    let A = a.toString(2).match(/1/g)?.length || 0
+    let B = b.toString(2).match(/1/g)?.length || 0
+    return A == B ? a - b : A - B
+  })
+  console.log(arr2.map(el=>el.toString(2)))
+  console.log(['0', '1', '10', '100', '1000', '11', '101', '110', '111'])
+  console.log([0, 1, 2, 4, 8, 3, 5, 6, 7])
+  // [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  // ['0', '1', '10', '11', '100', '101', '110', '111', '1000']
+  // [0, 1, 2, 4, 8, 3, 5, 6, 7]
+  // ['0', '1', '10', '100', '1000', '11', '101', '110', '111']
+}
+
+
+// Example 1:
+// Input: arr = [0,1,2,3,4,5,6,7,8]
+// Output: [0,1,2,4,8,3,5,6,7]
+// Explantion: [0] is the only integer with 0 bits.
+// [1,2,4,8] all have 1 bit.
+// [3,5,6] have 2 bits.
+// [7] has 3 bits.
+// The sorted array by bits is [0,1,2,4,8,3,5,6,7]
+// Example 2:
+// Input: arr = [1024,512,256,128,64,32,16,8,4,2,1]
+// Output: [1,2,4,8,16,32,64,128,256,512,1024]
+// Explantion: All integers have 1 bit in the binary representation, you should just sort them in ascending order.
+
+// Реализуйте класс ExtendedDate, унаследовав его от стандарт -
+//   ного класса Date и добавив следующие возможности:
+// ■ метод для вывода даты(числа и месяца) текстом;
+// ■ метод для проверки – это прошедшая дата или будущая
+//   (если прошедшая, то метод возвращает false; если буду -
+//   щая или текущая, то true);
+// ■ метод для проверки – високосный год или нет;
+// ■ метод, возвращающий следующую дату.
+// Создайте объект класса ExtendedDate и выведите на экран
+// результаты работы новых методов.
+
+function numberToText(n: number) {
+  if (n < -99 || n > 99) return 'Неверное число'
+  let minusStr = ''
+  let sN = ''
+  const numberWithMinus = n.toString()
+  if (numberWithMinus[0] == '-') {
+    minusStr = 'минус '
+    sN = numberWithMinus.slice(1)
+  } else {
+    sN = n.toString()
+  }
+  const oneNumber = [, 'первое', 'второе', 'третье', 'четвёртое', 'пятое', 'шестое', 'седьмое', 'восьмое', 'девятое']
+  const secondOfTen = ['десятое', 'одиннадцатое', 'двенадцатое', 'тринадцатое', 'четырнадцатое', 'пятьнадцатое', 'шестьнадцатое', 'семьнадцатое', 'восемьнадцатое', 'девятьнадцатое']
+  const firstOfMoreTen = [, , 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+  const firstOfMoreTenRound = [, , 'двадцатое', 'тридцатое', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+  if (sN.length == 1) {
+    return minusStr + oneNumber[+sN[0]]
+  }
+  if (sN.length == 2) {
+    if (sN[0] == '1') {
+      return minusStr + secondOfTen[+sN[1]]
+    }
+    if (sN[1] == '0') {
+      return minusStr + firstOfMoreTenRound[+sN[0]]
+    }
+    return minusStr + firstOfMoreTen[+sN[0]] + ' ' + oneNumber[+sN[1]]
+  }
+}
+
+class ExtendedDate extends Date {
+  getRussianDate() {
+    const month = ['января', 'февряля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+    return numberToText(this.getDate()) + ' ' + month[this.getMonth()]
+  }
+  isFuture() {
+    return this.getTime() > Date.now()
+  }
+  isLeap() {
+    const year = this.getFullYear()
+    return year%4==0 && (year%100!=0 || year%400==0)
+  }
+  nextDate() {
+    return new ExtendedDate(this.setDate(this.getDate()+1))
+  }
+}
+
+console.log(new Date('10-02-2023'))
+console.log(new ExtendedDate('10-02-2023'))
+console.log(ExtendedDate.now())
+console.log(new ExtendedDate(Date.now()-24*3600*1000).getRussianDate())
+console.log(new ExtendedDate(Date.now()-24*3600*1000).isFuture())
+console.log(new ExtendedDate().isFuture())
+console.log(new ExtendedDate(Date.now() + 24 * 3600 * 1000).isFuture())
+console.log(new ExtendedDate().isLeap())
+console.log(new ExtendedDate('10-02-2024').isLeap())
+console.log(new ExtendedDate('10-02-2300').isLeap())
+console.log(new ExtendedDate('10-02-2400').isLeap())
+console.log(new ExtendedDate().nextDate().nextDate().nextDate())
+
+console.log(closureSum(3)(5))
+console.log(a)
+console.log((null+'a').split('ll').join('tell'))
+
 
 
 
