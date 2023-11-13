@@ -4250,3 +4250,127 @@ digitsDiv.addEventListener('click', (e)=>{
   console.log(PowerArray.isArray([1,1]))
   Date.now()
 }
+
+
+const arrayMixin = {
+    isEmpty():boolean {
+      // @ts-ignore
+      return this.length === 0
+    }
+  }
+  Object.assign(Array.prototype, arrayMixin)
+  
+  // type ExtArr = Array<any> & { isEmpty: ()=>boolean }
+
+  // const newArr = [1, 2, 5] as ExtArr
+  // newArr.isEmpty()
+  // const filtred = newArr.filter(el => el > 6) as ExtArr
+  // filtred.isEmpty()
+  const arr1:any[] = [] 
+  // @ts-ignore
+  console.log('arr1.isEmpty()',arr1.isEmpty())
+  arr1.push(1)
+  // @ts-ignore
+  console.log('arr1.isEmpty()', arr1.isEmpty())
+}
+
+
+// Давайте обобщим, какие методы для проверки типа мы знаем:
+
+// ?работает для	возвращает
+// !typeof	примитивов	строка
+// !{}.toString	примитивов, встроенных объектов, объектов с Symbol.toStringTag	строка
+// !instanceof	объектов	true/false
+// Как мы можем видеть, технически {}.toString «более продвинут», чем typeof.
+
+// А оператор instanceof – отличный выбор, когда мы работаем с иерархией классов и хотим делать проверки с учётом наследования.
+
+const tempTimerDiv = document.querySelector('#timer') as Element
+// tempTimerDiv.value у класса Element такого свойства нет
+console.log('Node', tempTimerDiv instanceof Node)
+console.log('EventTarget', tempTimerDiv instanceof EventTarget)
+console.log('HTMLElement', tempTimerDiv instanceof HTMLElement)
+console.log('HTMLDivElement', tempTimerDiv instanceof HTMLDivElement)
+const HTMLtempTimerDiv = tempTimerDiv as HTMLInputElement
+HTMLtempTimerDiv.value // у класса HTMLInputElement есть
+HTMLtempTimerDiv.checked
+console.log('HTMLElement', HTMLtempTimerDiv instanceof HTMLElement)
+console.log('HTMLDivElement', HTMLtempTimerDiv instanceof HTMLDivElement)
+console.log('HTMLInputElement', HTMLtempTimerDiv instanceof HTMLInputElement)
+console.log('{}.toString.call(HTMLDivElement)', {}.toString.call(HTMLDivElement))
+
+
+// Примесь – общий термин в объектно - ориентированном программировании: класс, который содержит в себе методы для других классов.
+
+// Некоторые другие языки допускают множественное наследование.JavaScript не поддерживает множественное наследование, но с помощью примесей мы можем реализовать нечто похожее, скопировав методы в прототип.
+
+// Мы можем использовать примеси для расширения функциональности классов, например, для обработки событий, как мы сделали это выше.
+
+// С примесями могут возникнуть конфликты, если они перезаписывают существующие методы класса.Стоит помнить об этом и быть внимательнее при выборе имён для методов примеси, чтобы их избежать.
+
+const mixin = {
+  myName() {
+    // @ts-ignore
+    console.log(this.tagName)
+  }
+}
+
+Object.assign(Element.prototype, mixin)
+
+const tempInput = document.querySelector('#name') as HTMLInputElement
+
+// @ts-ignore
+tempTimerDiv.myName()
+// @ts-ignore
+HTMLtempTimerDiv.myName()
+// @ts-ignore
+tempInput.myName()
+console.log(tempInput.tagName)
+
+const renderDiv = document.getElementById('render') as HTMLDivElement
+// document.body.innerHTML += 'Ещё текст из js'
+// renderDiv.innerHTML += '<b>Ещё текст из js</b>'
+
+// renderDiv.innerHTML = '' // Самый простой способ очистить содержимое элемента
+
+// renderDiv.insertAdjacentHTML('afterend', '<i>После блока div</i>')
+
+// renderDiv.insertAdjacentHTML('beforeend', '<hr>')
+// renderDiv.insertAdjacentHTML('beforeend', '<b>В конце блока div</b>')
+
+// renderDiv.insertAdjacentHTML('beforebegin', '<i>До блока div</i>')
+
+// renderDiv.insertAdjacentHTML('afterbegin', '<b>В начале блока div</b>')
+
+// Реализовать класс PrintMaсhine, которой состоит из:
+// ■ размера шрифта;
+// ■ цвета шрифта;
+// ■ семейства шрифта;
+// ■ метода print(), который принимает текст и печатает его
+// соответствующим шрифтом с помощью document.write().
+// Создать объект такого класса и продемонстрировать работу
+// метода.
+
+class PrintMaсhine {
+  size
+  color
+  font
+  constructor(size:number,color:string, font:string) {
+    this.size = size
+    this.color = color
+    this.font = font
+  }
+  print(text:string) {
+    renderDiv.insertAdjacentHTML('beforeend', 
+      `<p style="color:${this.color};font-size:${this.size}px; font-family: ${this.font}">${text}</p>`)
+  }
+}
+
+const redMachine = new PrintMaсhine(10, 'red', 'Arial')
+redMachine.print('sdfgfsd fsdfs dfsdf sdf')
+const purpleMachine = new PrintMaсhine(12, 'purple', 'Tahoma')
+purpleMachine.print('sdfgfsd fsdfs dfsdf sdf')
+
+const textArr = ['Lorem ipsum dolor sit, amet consectetur adipisicing elit.', 'Delectus ex sequi reiciendis obcaecati accusamus repellendus animi expedita nihil similique deserunt.','Tempora cumque consequatur libero deleniti eaque, doloribus voluptatum dicta alias?']
+
+textArr.forEach(el=>purpleMachine.print(el))
