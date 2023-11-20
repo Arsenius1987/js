@@ -4194,3 +4194,431 @@ console.log(new ExtendedDate().nextDate().nextDate().nextDate())
 console.log(closureSum(3)(5))
 console.log(a)
 console.log((null+'a').split('ll').join('tell'))
+
+
+
+
+
+const digitsDiv = document.querySelector('.digits') as HTMLDivElement
+const inputDiv = document.querySelector('div.input') as HTMLDivElement
+
+let pass = ''
+digitsDiv.addEventListener('click', (e)=>{
+  const target = e.target as HTMLElement
+  if (target.tagName=='BUTTON') {
+    if (target.dataset.val) pass += target.dataset.val
+    if (target.dataset.action) pass = pass.slice(0, pass.length-1)
+    inputDiv.textContent = '*'.repeat(pass.length)
+    console.log(pass)
+  }
+})
+
+// В терминах ООП отделение внутреннего интерфейса от внешнего называется инкапсуляция.
+
+// Это даёт следующие выгоды:
+
+// !Защита для пользователей, чтобы они не выстрелили себе в ногу
+// ?Поддерживаемость
+// Ситуация в программировании сложнее, чем с реальной кофеваркой, потому что мы не просто покупаем её один раз.Код постоянно подвергается разработке и улучшению.
+// Если мы чётко отделим внутренний интерфейс, то разработчик класса сможет свободно менять его внутренние свойства и методы, даже не информируя пользователей…
+// Если вы разработчик такого класса, то приятно знать, что приватные методы можно безопасно переименовывать, их параметры можно изменять и даже удалять, потому что от них не зависит никакой внешний код.
+// В новой версии вы можете полностью всё переписать, но пользователю будет легко обновиться, если внешний интерфейс остался такой же.
+
+// ?Сокрытие сложности
+// Люди обожают использовать простые вещи.По крайней мере, снаружи.Что внутри – это другое дело.
+// Программисты не являются исключением.
+// Всегда удобно, когда детали реализации скрыты, и доступен простой, хорошо документированный внешний интерфейс.
+// Для сокрытия внутреннего интерфейса мы используем защищённые или приватные свойства:
+
+// !Защищённые поля имеют префикс _.Это хорошо известное соглашение, не поддерживаемое на уровне языка.Программисты должны обращаться к полю, начинающемуся с _, только из его класса и классов, унаследованных от него.
+// !Приватные поля имеют префикс #.JavaScript гарантирует, что мы можем получить доступ к таким полям только внутри класса.
+// В настоящее время приватные поля не очень хорошо поддерживаются в браузерах, но можно использовать полифил.
+
+{
+  class PowerArray extends Array {
+    constructor(...args:any[]) {
+      super(...args)
+    }
+    isEmpty() {
+      return this.length === 0
+    }
+  }
+
+  let arr = new PowerArray(1, 2, 5, 10, 50)
+  // let arr = [1, 2, 5, 10, 50] as PowerArray
+  console.log(arr.isEmpty()) // false
+
+  let filteredArr = arr.filter(item => item >= 10) as PowerArray
+  console.log(filteredArr) // 10, 50
+  console.log(filteredArr.isEmpty()) // false
+  console.log(PowerArray.isArray([1,1]))
+  Date.now()
+
+  const arrayMixin = {
+    isEmpty():boolean {
+      // @ts-ignore
+      return this.length === 0
+    }
+  }
+  Object.assign(Array.prototype, arrayMixin)
+  
+  // type ExtArr = Array<any> & { isEmpty: ()=>boolean }
+
+  // const newArr = [1, 2, 5] as ExtArr
+  // newArr.isEmpty()
+  // const filtred = newArr.filter(el => el > 6) as ExtArr
+  // filtred.isEmpty()
+  const arr1:any[] = [] 
+  // @ts-ignore
+  console.log('arr1.isEmpty()',arr1.isEmpty())
+  arr1.push(1)
+  // @ts-ignore
+  console.log('arr1.isEmpty()', arr1.isEmpty())
+}
+
+
+// Давайте обобщим, какие методы для проверки типа мы знаем:
+
+// ?работает для	возвращает
+// !typeof	примитивов	строка
+// !{}.toString	примитивов, встроенных объектов, объектов с Symbol.toStringTag	строка
+// !instanceof	объектов	true/false
+// Как мы можем видеть, технически {}.toString «более продвинут», чем typeof.
+
+// А оператор instanceof – отличный выбор, когда мы работаем с иерархией классов и хотим делать проверки с учётом наследования.
+
+const tempTimerDiv = document.querySelector('#timer') as Element
+// tempTimerDiv.value у класса Element такого свойства нет
+console.log('Node', tempTimerDiv instanceof Node)
+console.log('EventTarget', tempTimerDiv instanceof EventTarget)
+console.log('HTMLElement', tempTimerDiv instanceof HTMLElement)
+console.log('HTMLDivElement', tempTimerDiv instanceof HTMLDivElement)
+const HTMLtempTimerDiv = tempTimerDiv as HTMLInputElement
+HTMLtempTimerDiv.value // у класса HTMLInputElement есть
+HTMLtempTimerDiv.checked
+console.log('HTMLElement', HTMLtempTimerDiv instanceof HTMLElement)
+console.log('HTMLDivElement', HTMLtempTimerDiv instanceof HTMLDivElement)
+console.log('HTMLInputElement', HTMLtempTimerDiv instanceof HTMLInputElement)
+console.log('{}.toString.call(HTMLDivElement)', {}.toString.call(HTMLDivElement))
+
+
+// Примесь – общий термин в объектно - ориентированном программировании: класс, который содержит в себе методы для других классов.
+
+// Некоторые другие языки допускают множественное наследование.JavaScript не поддерживает множественное наследование, но с помощью примесей мы можем реализовать нечто похожее, скопировав методы в прототип.
+
+// Мы можем использовать примеси для расширения функциональности классов, например, для обработки событий, как мы сделали это выше.
+
+// С примесями могут возникнуть конфликты, если они перезаписывают существующие методы класса.Стоит помнить об этом и быть внимательнее при выборе имён для методов примеси, чтобы их избежать.
+
+const mixin = {
+  myName() {
+    // @ts-ignore
+    console.log(this.tagName)
+  }
+}
+
+Object.assign(Element.prototype, mixin)
+
+const tempInput = document.querySelector('#name') as HTMLInputElement
+
+// @ts-ignore
+tempTimerDiv.myName()
+// @ts-ignore
+HTMLtempTimerDiv.myName()
+// @ts-ignore
+tempInput.myName()
+console.log(tempInput.tagName)
+
+const renderDiv = document.getElementById('render') as HTMLDivElement
+// document.body.innerHTML += 'Ещё текст из js'
+// renderDiv.innerHTML += '<b>Ещё текст из js</b>'
+
+// renderDiv.innerHTML = '' // Самый простой способ очистить содержимое элемента
+
+// renderDiv.insertAdjacentHTML('afterend', '<i>После блока div</i>')
+
+// renderDiv.insertAdjacentHTML('beforeend', '<hr>')
+// renderDiv.insertAdjacentHTML('beforeend', '<b>В конце блока div</b>')
+
+// renderDiv.insertAdjacentHTML('beforebegin', '<i>До блока div</i>')
+
+// renderDiv.insertAdjacentHTML('afterbegin', '<b>В начале блока div</b>')
+
+// Реализовать класс PrintMaсhine, которой состоит из:
+// ■ размера шрифта;
+// ■ цвета шрифта;
+// ■ семейства шрифта;
+// ■ метода print(), который принимает текст и печатает его
+// соответствующим шрифтом с помощью document.write().
+// Создать объект такого класса и продемонстрировать работу
+// метода.
+
+class PrintMaсhine {
+  size
+  color
+  font
+  constructor(size:number,color:string, font:string) {
+    this.size = size
+    this.color = color
+    this.font = font
+  }
+  print(text:string) {
+    renderDiv.insertAdjacentHTML('beforeend', 
+      `<p style="color:${this.color};font-size:${this.size}px; font-family: ${this.font}">${text}</p>`)
+  }
+}
+
+const redMachine = new PrintMaсhine(10, 'red', 'Arial')
+redMachine.print('sdfgfsd fsdfs dfsdf sdf')
+const purpleMachine = new PrintMaсhine(12, 'purple', 'Tahoma')
+purpleMachine.print('sdfgfsd fsdfs dfsdf sdf')
+
+const textArr = ['Lorem ipsum dolor sit, amet consectetur adipisicing elit.', 'Delectus ex sequi reiciendis obcaecati accusamus repellendus animi expedita nihil similique deserunt.','Tempora cumque consequatur libero deleniti eaque, doloribus voluptatum dicta alias?']
+
+textArr.forEach(el=>purpleMachine.print(el))
+
+
+//   Задание 3
+//   Реализовать класс Employee, описывающий работника, и со-
+//   здать массив работников банка.
+//   Реализовать класс EmpTable для генерации html кода таблицы
+//   со списком работников банка. Массив работников необходимо
+//   передавать через конструктор, а получать html код с помощью
+//   метода getHtml().
+//   Создать объект класса EmpTable и вывести на экран результат
+//   работы метода getHtml().
+
+class Employee{
+  static id = localStorage.staticId || 1
+  id
+  name
+  salary
+  constructor(name: string, salary: number){
+    this.id = Employee.id++
+    this.name = name
+    this.salary = salary
+    localStorage.staticId = Employee.id
+  }
+}
+
+const empArr = localStorage.empArr ? JSON.parse(localStorage.empArr) : [
+  new Employee('Санек',40_000,),
+  new Employee('Леха',40_000,),
+  new Employee('Никитос',60_000,),
+  new Employee('Андрюха',40_000,),
+  new Employee('Ванечка',50_000,),
+]
+
+let addEmploye = document.querySelector('.addEmploye') as HTMLButtonElement
+let buttonState = 'add'
+let empId = document.querySelector('.id') as HTMLInputElement
+let empName = document.querySelector('.name') as HTMLInputElement
+let empSalary = document.querySelector('.salary') as HTMLInputElement
+let table = document.querySelector('.table') as HTMLDivElement
+
+addEmploye.addEventListener('click', ()=>{
+  if (empName.value && empSalary.value) {
+    if (buttonState == 'add') {
+      empTable.addEmployee(new Employee(empName.value, parseInt(empSalary.value)))
+    } else {
+      empTable.editEmployee(+empId.value, empName.value, parseInt(empSalary.value))
+    }
+    empId.value = ''
+    empName.value = ''
+    empSalary.value = ''
+    empTable.render()
+    addEmploye.textContent = 'Добавить'
+    buttonState = 'add'
+  }
+})
+
+table.addEventListener('click', (e)=>{
+  const target = e.target as HTMLElement
+  if (target.dataset.action == 'delete') {
+    if (target.dataset.id) empTable.removeEmployee(+target.dataset.id)
+    empTable.render()
+  }
+  if (target.dataset.action == 'edit') {
+    addEmploye.textContent = 'Сохранить'
+    buttonState = 'edit'
+    if (target.dataset.id) {
+      const el = empTable.getEmployeeData(+target.dataset.id)
+      empId.value = el?.id.toString() || ''
+      empName.value = el?.name || ''
+      empSalary.value = el?.salary.toString() || ''
+    }
+  }
+})
+
+class EmployeeTable {
+  table
+  constructor(table:Employee[]) {
+    this.table = table
+  }
+  addEmployee(el:Employee) {
+    this.table.push(el)
+  }
+  editEmployee(id:number, name:string, salary:number) {
+    const i = this.table.findIndex(emp => emp.id == id)
+    this.table[i].name = name
+    this.table[i].salary = salary
+  }
+  removeEmployee(id:number) {
+    const i = this.table.findIndex(el => el.id == id)
+    this.table.splice(i,1)
+  }
+  getEmployeeData(id:number) {
+    return this.table.find(el => el.id == id)
+  }
+  getHtml() {
+    let tableHtml = `
+      <table>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+      <tbody>`
+    this.table.forEach((el,i)=>{
+      tableHtml += `
+      <tr>
+        <td>${i+1}</td>
+        <td>${el.name}</td>
+        <td>${el.salary}</td>
+        <td>
+          <button data-action="edit" data-id="${el.id}">✎</button>
+          <button data-action="delete" data-id="${el.id}">☠</button>
+        </td>
+      </tr>`
+    })
+    tableHtml += `</tbody></table>`
+    return tableHtml
+  }
+  render() {
+    table.innerHTML = this.getHtml()   
+    localStorage.empArr = JSON.stringify(this.table) 
+  }
+}
+
+const empTable = new EmployeeTable(empArr)
+empTable.render()
+
+// JSON – это формат данных, который имеет собственный независимый стандарт и библиотеки для большинства языков программирования.
+// JSON поддерживает простые объекты, массивы, строки, числа, логические значения и null.
+// JavaScript предоставляет методы JSON.stringify для сериализации в JSON и JSON.parse для чтения из JSON.
+// Оба метода поддерживают функции преобразования для интеллектуального чтения / записи.
+// Если объект имеет метод toJSON, то он вызывается через JSON.stringify.
+
+{
+  // ?Метод Object.getOwnPropertyDescriptor позволяет получить полную информацию о свойстве.
+  let user = {
+    name: "John",
+  } as any
+
+  let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+  console.log(JSON.stringify(descriptor, null, 2));
+  /* дескриптор свойства:
+  {
+    "value": "John",
+    "writable": true,
+    "enumerable": true,
+    "configurable": true
+  }
+  */
+
+  // ?Чтобы изменить флаги, мы можем использовать метод Object.defineProperty.
+  // !Если свойство существует, defineProperty обновит его флаги.В противном случае метод создаёт новое свойство с указанным значением и флагами; если какой - либо флаг не указан явно, ему присваивается значение false.
+
+  Object.defineProperty(user, "age", {
+    value: "22",
+    configurable: true
+  })
+
+  // !Обратите внимание: configurable: false не даст изменить флаги свойства, а также не даст его удалить.При этом можно изменить значение свойства, если флаг writable равен true
+
+  descriptor = Object.getOwnPropertyDescriptor(user, 'age');
+
+  console.log(JSON.stringify(descriptor, null, 2));
+  /*
+  {
+    "value": "22",
+    "writable": false,
+    "enumerable": false,
+    "configurable": false
+  }
+   */
+
+  try {
+    user.age = 23
+    delete user.age
+  } catch(e) {
+    console.log(e)
+  }
+
+  Object.defineProperty(user, "age", {
+    value: "22",
+    writable: true
+  })
+
+  user.age = 23
+
+  console.log(Object.keys(user))
+  
+  Object.defineProperty(user, "age", {
+    value: user.age,
+    writable: true,
+    enumerable:true
+  })
+
+  console.log(Object.keys(user))
+
+  // ?Существует метод Object.defineProperties(obj, descriptors), который позволяет определять множество свойств сразу.
+
+  // Его синтаксис:
+
+  // Object.defineProperties(obj, {
+  //   prop1: descriptor1,
+  //   prop2: descriptor2
+  //   ...
+  // });
+  
+  Object.defineProperties(user, {
+    name: { value: "John", writable: false },
+    surname: { value: "Smith", writable: false },
+    // ...
+  })
+
+  // Object.getOwnPropertyDescriptors
+  // Чтобы получить все дескрипторы свойств сразу, можно воспользоваться методом Object.getOwnPropertyDescriptors(obj).
+
+  // !Вместе с Object.defineProperties этот метод можно использовать для клонирования объекта вместе с его флагами:
+
+  let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(user))
+
+// Глобальное запечатывание объекта
+// Дескрипторы свойств работают на уровне конкретных свойств.
+
+// Но ещё есть методы, которые ограничивают доступ ко всему объекту:
+
+// ?    Object.preventExtensions(obj)
+// Запрещает добавлять новые свойства в объект.
+// ?    Object.seal(obj)
+// Запрещает добавлять / удалять свойства.Устанавливает configurable: false для всех существующих свойств.
+// ?    Object.freeze(obj)
+// Запрещает добавлять / удалять / изменять свойства.Устанавливает configurable: false, writable: false для всех существующих свойств.
+
+// А также есть методы для их проверки:
+// ?    Object.isExtensible(obj)
+// Возвращает false, если добавление свойств запрещено, иначе true.
+// ?    Object.isSealed(obj)
+// Возвращает true, если добавление / удаление свойств запрещено и для всех существующих свойств установлено configurable: false.
+// ?    Object.isFrozen(obj)
+// Возвращает true, если добавление / удаление / изменение свойств запрещено, и для всех текущих свойств установлено configurable: false, writable: false.
+// На практике эти методы используются редко.
+}
+
+// ionic
