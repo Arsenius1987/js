@@ -4272,7 +4272,6 @@ const arrayMixin = {
   arr1.push(1)
   // @ts-ignore
   console.log('arr1.isEmpty()', arr1.isEmpty())
-}
 
 
 // Давайте обобщим, какие методы для проверки типа мы знаем:
