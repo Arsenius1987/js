@@ -4270,7 +4270,6 @@ digitsDiv.addEventListener('click', (e)=>{
   arr1.push(1)
   // @ts-ignore
   console.log('arr1.isEmpty()', arr1.isEmpty())
-}
 
 
 // Давайте обобщим, какие методы для проверки типа мы знаем:
@@ -4617,6 +4616,7 @@ empTable.render()
 // На практике эти методы используются редко.
 }
 
+<<<<<<< HEAD
 // HTML/XML документы представлены в браузере в виде DOM-дерева.
 
 // Теги становятся узлами-элементами и формируют структуру документа.
@@ -4626,6 +4626,13 @@ empTable.render()
 
 // ionic
 
+=======
+// ionic
+
+
+
+
+>>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
 // Получив DOM-узел, мы можем перейти к его ближайшим соседям используя навигационные ссылки.
 
 // Есть два основных набора ссылок:
@@ -4660,6 +4667,12 @@ empTable.render()
 
 // ?elemA.contains(elemB) вернёт true, если elemB находится внутри elemA(elemB потомок elemA) или когда elemA == elemB.
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
 const firstAnchor = document.querySelector('a') as HTMLAnchorElement
 const firstInput = document.querySelector('input') as HTMLInputElement
 
@@ -4745,6 +4758,12 @@ setInterval(() => elem.hidden = !elem.hidden, 1000)
 // ?Нужен нестандартный атрибут.Но если он начинается с data -, тогда нужно использовать dataset.
 // ?Мы хотим получить именно то значение, которое написано в HTML.Значение DOM - свойства может быть другим, например, свойство href – всегда полный URL, а нам может понадобиться получить «оригинальное» значение.
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
 // !Стили и классы
 // !Свойство style оперирует только значением атрибута "style", без учёта CSS-каскада
 
@@ -4799,12 +4818,18 @@ document.addEventListener('mousemove', (e)=>{
   }
 })
 
+<<<<<<< HEAD
 const getSize = () => {
+=======
+// Ждём, пока бразер загрузит изображение, а затем читаем высоту/ширину
+window.addEventListener('load',()=>{
+>>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
   const imgEl = document.querySelector('img') as HTMLImageElement
   if (imgEl) {
     console.log(imgEl.offsetHeight)
     console.log(imgEl.offsetWidth)
   }
+<<<<<<< HEAD
 }
 
 // Ждём, пока бразер загрузит изображение, а затем читаем высоту/ширину
@@ -4946,3 +4971,6 @@ document.addEventListener('click', (e)=>{
 
 // Во - первых, событие должно всплывать.Некоторые события этого не делают.Также, низкоуровневые обработчики не должны вызывать event.stopPropagation().
 //   Во - вторых, делегирование создаёт дополнительную нагрузку на браузер, ведь обработчик запускается, когда событие происходит в любом месте контейнера, не обязательно на элементах, которые нам интересны.Но обычно эта нагрузка настолько пустяковая, что её даже не стоит принимать во внимание.
+=======
+})
+>>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
