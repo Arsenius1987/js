@@ -4584,7 +4584,7 @@ empTable.render()
   Object.defineProperties(user, {
     name: { value: "John", writable: false },
     surname: { value: "Smith", writable: false },
-    // ...
+  
   })
 
   // Object.getOwnPropertyDescriptors
@@ -4613,10 +4613,7 @@ empTable.render()
 // Возвращает true, если добавление / удаление свойств запрещено и для всех существующих свойств установлено configurable: false.
 // ?    Object.isFrozen(obj)
 // Возвращает true, если добавление / удаление / изменение свойств запрещено, и для всех текущих свойств установлено configurable: false, writable: false.
-// На практике эти методы используются редко.
-}
-
-<<<<<<< HEAD
+// На практике эти методы использ
 // HTML/XML документы представлены в браузере в виде DOM-дерева.
 
 // Теги становятся узлами-элементами и формируют структуру документа.
@@ -4626,13 +4623,11 @@ empTable.render()
 
 // ionic
 
-=======
 // ionic
 
 
 
-
->>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
+c044e614c14e285d8abee0ba294efc8acb5ccda7
 // Получив DOM-узел, мы можем перейти к его ближайшим соседям используя навигационные ссылки.
 
 // Есть два основных набора ссылок:
@@ -4667,12 +4662,10 @@ empTable.render()
 
 // ?elemA.contains(elemB) вернёт true, если elemB находится внутри elemA(elemB потомок elemA) или когда elemA == elemB.
 
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> c044e614c14e285d8abee0ba294efc8acb5ccda7
+//  c044e614c14e285d8abee0ba294efc8acb5ccda7
 const firstAnchor = document.querySelector('a') as HTMLAnchorElement
 const firstInput = document.querySelector('input') as HTMLInputElement
 
