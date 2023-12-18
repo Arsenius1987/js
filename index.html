@@ -23,12 +23,19 @@
         transition: 0.25s;
         box-shadow: inset #cbcbcc 0px 0px 12px;
       }
+      .absolute {
+        position: absolute;
+      }
+      .block {
+        width: 50px; height: 50px; background: #646cff;
+      }
     </style>
   </head>
   <body>
     <a id="href" href="https://disk.yandex.ru/d/KwdXQropyuL3Iw" target="_blank">Материалы, ДЗ и практика</a>
     <a href="https://disk.yandex.ru/d/52LeM6eF1NeKig" target="_blank">Видео</a>
     <a href="https://disk.yandex.ru/d/LADtnZajP19xeQ">Ещё видео</a>
+    <a href="https://wp-kama.ru/id_5875/30-css-selektorov.html">Селекторы</a>
     <ol>
       <li>Скачать Node.js с сайта. Версия 18. Усьтановить</li>
       <li>Перезапустить vs code</li>
@@ -37,6 +44,10 @@
       <li>В терминале написать 'npm i' и нажать enter</li>
       <li>В терминале написать 'npm run dev', нажать enter, перейти по ссылке</li>
     </ol>
+
+    <button> <b>sfsfsdf</b> fsdfsdf <i>sdfdsfsdf</i> </button>
+
+    <div class="block"></div>
 
     <div class="input" type="password"></div>
 
@@ -55,7 +66,7 @@
     </div>
 
     <div id="render">
-      <p style="color:BLUE;font-size:24px; font-family: Verdana">TEXT</p>
+      <p style="color:BLUE;font-size:24px; font-family: Verdana">T<span>E</span>XT</p>
     </div>
 
     
@@ -157,6 +168,81 @@
     <input type="text" class="salary" placeholder="Введите зарплату">
     <button class="addEmploye">Добавить</button>
 
+    <style>
+      [data-action=save] {
+        background-color: #646cff;
+      }
+    </style>
+
+    <div id="menu" style="margin: 30px;">
+      <button data-action="save">Сохранить</button>
+      <button data-action="load">Загрузить</button>
+      <button data-action="search">Поиск</button>
+      <button data-action="s1">Поиск1</button>
+    </div>
+
+    <style>
+      .slider_div {
+        display: flex;
+        width: 800px;
+        height: 300px;
+        overflow: hidden;
+        margin: 70px auto 150px;
+        background-color: darkgrey;
+        border-radius: 15px;
+        border: 2px solid black;
+        align-items: center;
+        position: relative;
+        gap: 180px;
+        -webkit-box-shadow: -22px 18px 11px 11px rgba(34, 60, 80, 0.37);
+        -moz-box-shadow: -22px 18px 11px 11px rgba(34, 60, 80, 0.37);
+        box-shadow: -22px 18px 11px 11px rgba(34, 60, 80, 0.37)
+      }
+
+      .three_imgs {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        height: 300px;
+        width: 620px;
+        justify-content: center;
+      }
+
+      .slider_img {
+        width: 200px;
+        height: 150px;
+        display: block;
+      }
+
+      .bim {
+        transition: 1s;
+      }
+      
+      .arrow {
+        font-size: 50px;
+        font-weight: 800;
+        background-color: #cbcbcc;
+        position: absolute;
+        border-radius: 20px;
+        height: 50px;
+        padding-bottom: 20px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /* Arrows   */
+      .sc {
+        right: 20px;
+      }
+
+      .fs {
+        left: 20px;
+      }
+      
+    </style>
+
+   
+    
     <script type="module" src="/src/main.ts">
       // Не сработает если указана ссылка на файл
       alert('hello')
@@ -166,6 +252,7 @@
       // Здесь можно писать обычный JS
       document.write('Текст написан в JS')
       let active = 0
+      console.log(svet)
       const rounds = document.querySelectorAll('.inner')
       setInterval(()=>{
         const current = rounds[active]
@@ -173,6 +260,18 @@
         active = current.dataset.val
         rounds[active].classList.add('light')
       },2000)
+
+      menu.onclick = (e) => {
+        actions[e.target.dataset.action]()
+      }
+      const actions = {
+        save() { console.log('save') },
+        load() { console.log('load') },
+        search() { console.log('search') },
+        s1() { console.log('s1') },
+      }
+
+
     </script>
   </body>
 </html>
